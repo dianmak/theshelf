@@ -7,14 +7,17 @@ const models = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 
-//get all active items for display on home page
-router.get("/activeitems", function (req, res) {
-    models.Item.findAll({ where: { status: "In Use" } }).then(function (data) {
-        var hbsObject = {
-            items: data
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+//get items by category
+router.get("/api/items/:category", function (req, res) {
+    models.Item.findAll({ where: { category: req.params.category } }).then(function (data) {
+        res.json(data);
+    });
+});
+
+//get items by status
+router.get("/api/items/:status", function (req, res) {
+    models.Item.findAll({ where: { status: req.params.status } }).then(function (data) {
+        res.json(data);
     });
 });
 
@@ -70,7 +73,7 @@ router.delete("/api/myshelf/retireitem", function (req, res) {
 });
 
 // create new user profile
-router.put("/api/user", function (req, res) {
+router.put("/api/user/create", function (req, res) {
     models.User.create(req.body).then(function (result) {
         if (result.changedRows === 0) {
             // If no rows were changed, then the ID must not exist, so 404
@@ -82,7 +85,7 @@ router.put("/api/user", function (req, res) {
 });
 
 // delete user profile
-router.delete("/api/user/:email", function (req, res) {
+router.delete("/api/user/delete/:email", function (req, res) {
     models.User.destroy({ where: { email: req.params.email } }).then(function (result) {
         if (result.changedRows === 0) {
             // If no rows were changed, then the ID must not exist, so 404

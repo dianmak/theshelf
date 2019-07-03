@@ -1,0 +1,32 @@
+.parallax {
+    /* The image used */
+    background-image: url("./assets/images/hero-placeholder.jpg");
+
+    /* Set a specific height */
+    height: 700px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding-top: 20%;
+}
+
+.row {
+    display:block;
+    padding:50px;
+}
+
+.btn-lg{
+    margin:50px;
+}
+
+#shelf-glance{
+    background:#E6E6E6;
+}
+
+#budget-glance{
+    background:white;
+}

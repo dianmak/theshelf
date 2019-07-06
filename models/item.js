@@ -77,7 +77,7 @@ module.exports = function (sequelize, DataTypes) {
         // An Item can't be created without a User due to the foreign key constraint
         Item.belongsTo(models.User, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
     };

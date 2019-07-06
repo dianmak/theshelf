@@ -8,14 +8,14 @@ const models = require("../models");
 // Create all our routes and set up logic within those routes where required.
 
 //get items by category
-router.get("/api/items/:category", function (req, res) {
+router.get("/api/items/category/:category", function (req, res) {
     models.Item.findAll({ where: { category: req.params.category } }).then(function (data) {
         res.json(data);
     });
 });
 
 //get items by status
-router.get("/api/items/:status", function (req, res) {
+router.get("/api/items/status/:status", function (req, res) {
     models.Item.findAll({ where: { status: req.params.status } }).then(function (data) {
         res.json(data);
     });

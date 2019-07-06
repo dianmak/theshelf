@@ -35,9 +35,13 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             validate: {
                 isIn: {
-                    args: [["Makeup", "Skincare", "Hair", "Fragrance"]]
+                    args: [["Makeup", "Skincare", "Hair", "Fragrance", "Other"]]
                 }
             }
+        },
+        label: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         price: {
             type: DataTypes.NUMERIC(4, 2),
@@ -61,13 +65,17 @@ module.exports = function (sequelize, DataTypes) {
         previously_used: {
             type: DataTypes.INTEGER,
             defaultValue: 0
+        },
+        imageURL: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     });
 
     Item.associate = function (models) {
         // We're saying that an Item should belong to a User
         // An Item can't be created without a User due to the foreign key constraint
-        Post.belongsTo(models.User, {
+        Item.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }

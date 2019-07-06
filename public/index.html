@@ -23,8 +23,26 @@
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-light bg-light">
-        <a class="navbar-brand" href="#">the shelf</a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">The Shelf</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./shelf.html">My Shelf</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./wallet.html">My Wallet</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div class="parallax">
@@ -147,19 +165,26 @@
             height="auto">
 
         <button type="button" class="btn btn-secondary btn-lg">Manage All</button>
+    </div>
 
-        <div class="container-fluid text-center" id="budget-glance">
-            <div class="row">
-                <div class="col-md-12">
+    <div class="container-fluid text-center" id="budget-glance">
+        <div class="row">
+            <div class="col-md-12">
 
-                    <h1>My Budget</h1>
-                    <p>Placeholder text</p>
-                </div>
+                <h1>My Budget</h1>
+                <p>Placeholder text</p>
             </div>
         </div>
+    </div>
 
-        <!-- JQUERY -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <!-- JQUERY -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </body>
+
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">The Shelf</span>
+    </div>
+</footer>
 
 </html>

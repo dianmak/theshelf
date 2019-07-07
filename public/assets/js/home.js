@@ -1,7 +1,8 @@
 $(function () {
     // Upon loading the page, display In Use products as default
-    $.get("/api/items/In Use", function (result) {
-        result.array.forEach(element => {
+    $.get("/api/items/home", function (result) {
+        console.log(result);
+        result.forEach(element => {
             $("#homedisplay").append(`
             <div class="d-inline-block card" style="width: 18rem;">
             <img src=${element.imageURL} class="card-img-top" alt="...">

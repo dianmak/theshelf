@@ -21,8 +21,22 @@ router.get("/api/items/status/:status", function (req, res) {
     });
 });
 
+//home page
+router.get("/api/items/home", function (req, res) {
+    models.Item.findAll({
+        limit: 4,
+        where: {
+            status: "In Use"
+        },
+        order: [['id', 'DESC']]
+    }).then(function (data) {
+        console.log("here");
+        res.json(data);
+    });
+});
+
 //get ALL items for display on myshelf
-router.get("/myshelf", function (req, res) {
+router.get("/api/myshelf", function (req, res) {
     models.Item.findAll({}).then(function (data) {
         res.json(data);
     });

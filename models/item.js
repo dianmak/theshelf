@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         item_UPC: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         shelf_life: {

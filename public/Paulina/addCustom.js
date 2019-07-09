@@ -13,7 +13,7 @@ $(document).ready(function () {
         };
 
         addItem(newItem);
-
+        clear();
     });
 
     // Add new item to the database
@@ -27,12 +27,14 @@ $(document).ready(function () {
     }
 
     // Empty each input box by replacing the value with an empty string
-    $("#item_name").val("");
-    $("#item_img").val("");
-    $("#shelf_life").val("");
-    $("#category").val("");
-    $("#status").val("");
-    $("#price").val("");
+    function clear() {
+        $("#item_name").val("");
+        $("#item_img").val("");
+        $("#shelf_life").val("");
+        $("#category").val("");
+        $("#status").val("");
+        $("#price").val("");
+    }
 
 });
 

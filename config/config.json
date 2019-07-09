@@ -6,7 +6,10 @@
     "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 8889,
-    "operatorsAliases": false
+    "operatorsAliases": false,
+    "dialectOptions": {
+      "decimalNumbers": true
+    }
   },
   "test": {
     "username": "root",

@@ -110,5 +110,21 @@ router.delete("/api/user/delete/:email", function (req, res) {
     });
 });
 
+router.get("/api/home/chart", function (req, res) {
+    models.Item.findAll({ where: { status: "In Use" }, attributes: ["category", "price"] }).then(function (result) {
+        res.json(result);
+    });
+});
+
+router.get("/api/wallet/table/:category", function (req, res) {
+    models.Item.findAll({
+        limit: 5,
+        where: { category: req.params.category },
+        order: [["createdAt", "DESC"]]
+    }).then(function (result) {
+        res.json(result);
+    })
+});
+
 // Export routes for server.js to use.
 module.exports = router;

@@ -13,7 +13,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <!-- JQUERY -->
+    <!-- CHART -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
     <!-- STYLES -->
     <link rel="stylesheet" href="./style.css">
@@ -51,6 +53,8 @@
 
                 <h1>My Wallet</h1>
                 <p>Placeholder Text</p>
+
+                <canvas id="totalSpent" width="50" height="50"></canvas>
             </div>
         </div>
 
@@ -59,45 +63,55 @@
 
                 <h1>Placeholder for Chart</h1>
                 <p>Placeholder Text</p>
+
+
             </div>
         </div>
 
         <div class="row">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-md-12">
+                <div class="text-center">
+                    <h3>Recently Added Products</h3>
+                    <br>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">1</th>
+                            <th scope="col">2</th>
+                            <th scope="col">3</th>
+                            <th scope="col">4</th>
+                            <th scope="col">5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="tablerow1">
+                            <th scope="row">Makeup</th>
+                        </tr>
+                        <tr id="tablerow2">
+                            <th scope="row">Skincare</th>
+                        </tr>
+                        <tr id="tablerow3">
+                            <th scope="row">Hair</th>
+                        </tr>
+                        <tr id="tablerow4">
+                            <th scope="row">Fragrance</th>
+                        </tr>
+                        <tr id="tablerow5">
+                            <th scope="row">Other</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
 
     <!-- JQUERY -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="assets/js/wallet.js"></script>
+
 </body>
 
 <footer class="footer mt-auto py-3">

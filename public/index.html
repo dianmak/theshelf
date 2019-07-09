@@ -12,6 +12,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+    <!-- FONT REFERENCE -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+
     <!-- CHART -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
@@ -28,7 +31,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">The Shelf</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +66,7 @@
                 <p>Check out your self-care inventory at a glance!</p>
 
             </div>
-            <button type="button" class="btn btn-secondary btn-lg">Manage All</button>
+            <button type="button" class="btn btn-secondary btn-lg">Manage My Shelf</button>
         </div>
 
         <div id="homedisplay">
@@ -71,40 +74,36 @@
             <div class="d-inline-block card" style="width: 18rem;">
                 <img src="./assets/images/product-image-placeholder.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Most Recent Item Added 1</h5>
+                    <p class="card-text">Product Description</p>
+                    <a href="#" class="btn btn-primary">View Product</a>
                 </div>
             </div>
 
             <div class="d-inline-block card" style="width: 18rem;">
                 <img src="./assets/images/product-image-placeholder.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Most Recent Item Added 2</h5>
+                    <p class="card-text">Product Description</p>
+                    <a href="#" class="btn btn-primary">View Product</a>
                 </div>
             </div>
 
             <div class="d-inline-block card" style="width: 18rem;">
                 <img src="./assets/images/product-image-placeholder.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Most Recent Item Added 3</h5>
+                    <p class="card-text">Product Description</p>
+                    <a href="#" class="btn btn-primary">View Product</a>
                 </div>
             </div>
 
             <div class="d-inline-block card" style="width: 18rem;">
                 <img src="./assets/images/product-image-placeholder.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Most Recent Item Added 4</h5>
+                    <p class="card-text">Product Description</p>
+                    <a href="#" class="btn btn-primary">View Product</a>
                 </div>
             </div>
 
@@ -118,12 +117,12 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1>My Budget</h1>
+                <h1>My Wallet</h1>
                 <p>Placeholder text</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 mx-auto">
                 <canvas id="totalSpent" width="100" height="100"></canvas>
             </div>
         </div>
@@ -135,10 +134,10 @@
         let barChart = new Chart(totalSpent, {
             type: 'doughnut',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Makeup', 'Skin Care', 'Hair', 'Fragrance', 'Other'],
                 datasets: [{
                     label: 'Dollars Spent',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [10, 20, 30, 40, 50],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

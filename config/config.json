@@ -1,11 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "root",
+    "database": "shelf",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "port": 8889,
+    "operatorsAliases": false,
+    "dialectOptions": {
+      "decimalNumbers": true
+    }
   },
   "test": {
     "username": "root",

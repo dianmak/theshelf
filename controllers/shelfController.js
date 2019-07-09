@@ -21,8 +21,22 @@ router.get("/api/items/status/:status", function (req, res) {
     });
 });
 
+//home page
+router.get("/api/items/home", function (req, res) {
+    models.Item.findAll({
+        limit: 4,
+        where: {
+            status: "In Use"
+        },
+        order: [['id', 'DESC']]
+    }).then(function (data) {
+        console.log("here");
+        res.json(data);
+    });
+});
+
 //get ALL items for display on myshelf
-router.get("/myshelf", function (req, res) {
+router.get("/api/myshelf", function (req, res) {
     models.Item.findAll({}).then(function (data) {
         res.json(data);
     });
@@ -94,6 +108,22 @@ router.delete("/api/user/delete/:email", function (req, res) {
         res.status(200).end();
 
     });
+});
+
+router.get("/api/home/chart", function (req, res) {
+    models.Item.findAll({ where: { status: "In Use" }, attributes: ["category", "price"] }).then(function (result) {
+        res.json(result);
+    });
+});
+
+router.get("/api/wallet/table/:category", function (req, res) {
+    models.Item.findAll({
+        limit: 5,
+        where: { category: req.params.category },
+        order: [["createdAt", "DESC"]]
+    }).then(function (result) {
+        res.json(result);
+    })
 });
 
 // Export routes for server.js to use.

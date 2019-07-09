@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         item_UPC: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         shelf_life: {
@@ -44,7 +44,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
         },
         price: {
-            type: DataTypes.NUMERIC(4, 2),
+            type: DataTypes.NUMERIC(6, 2),
             allowNull: true,
             validate: {
                 min: 0
@@ -77,7 +77,7 @@ module.exports = function (sequelize, DataTypes) {
         // An Item can't be created without a User due to the foreign key constraint
         Item.belongsTo(models.User, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
     };

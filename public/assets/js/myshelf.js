@@ -4,7 +4,7 @@ $(function () {
         result.forEach(element => {
             $("#shelfdisplay").append(`
             <div class="d-inline-block card" style="width: 18rem;">
-            <img src=${element.imageURL} class="card-img-top" alt="...">
+            <img src=${element.imageURL} class="card-img-top img-fluid" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${element.item_name}</h5>
                 <p class="card-text">Category: ${element.category}</p>
@@ -26,7 +26,7 @@ $(function () {
             result.forEach(element => {
                 $("#shelfdisplay").append(`
                 <div class="d-inline-block card" style="width: 18rem;">
-                <img src=${element.imageURL} class="card-img-top" alt="...">
+                <img src=${element.imageURL} class="card-img-top img-fluid" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${element.item_name}</h5>
                     <p class="card-text">Category: ${element.category}</p>

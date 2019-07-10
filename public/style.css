@@ -1,4 +1,11 @@
-body {font-family: 'Nunito Sans', sans-serif;}
+h1 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+}
 
 .parallax {
     /* The image used */
@@ -38,6 +45,13 @@ body {font-family: 'Nunito Sans', sans-serif;}
     color: white;
 }
 
-/* .card{
-    max-height: 400px;
-}  */
+.d-inline-block{
+    align-self:center!important;
+    padding: .5%;
+    margin: .5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-img-top{
+    padding: 20%;
+}

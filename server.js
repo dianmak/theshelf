@@ -283,6 +283,34 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 1
     });
 
+    // 8 Wish List
+    db.Item.create({
+        item_name: "Origins Original Skin™ Matte Moisturizer with Willowherb",
+        item_UPC: 717334225671,
+        shelf_life: 16,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Skincare",
+        price: 36.00,
+        previously_used: 0,
+        imageURL: "https://s7d9.scene7.com/is/image/JCPenney/DP1101201706383538M?wid=800&hei=800&op_sharpen=1",
+        UserId: 1
+    });
+
+    // 9 Wish List
+    db.Item.create({
+        item_name: "Tata Harper Skincare Clarifying Cleanser",
+        item_UPC: 813269021705,
+        shelf_life: 18,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Skincare",
+        price: 68.00,
+        previously_used: 0,
+        imageURL: "https://n.nordstrommedia.com/id/sr3/7e66fc80-fe7c-462f-8570-8b3ab35a4f24.jpeg",
+        UserId: 1
+    });
+
     // Hair items
     // 1 In Use
     db.Item.create({
@@ -326,9 +354,9 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 1
     });
 
-    // History
+    // 4 History
     db.Item.create({
-        item_name: "Living Proof Restore Shampoo,",
+        item_name: "Living Proof Restore Shampoo",
         item_UPC: 148221284448,
         shelf_life: 18,
         status: "History",
@@ -337,6 +365,20 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 24.00,
         previously_used: 1,
         imageURL: "http://ecx.images-amazon.com/images/I/313XIQlMkVL._SL160_.jpg",
+        UserId: 1
+    });
+
+    // 5 Wish List
+    db.Item.create({
+        item_name: "Briogeo Blossom & Bloom Volumizing Conditioner",
+        item_UPC: 696859244131,
+        shelf_life: 18,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Hair",
+        price: 23.00,
+        previously_used: 1,
+        imageURL: "http://ecx.images-amazon.com/images/I/21Jh4b%2BJODL._SL160_.jpg",
         UserId: 1
     });
 
@@ -397,13 +439,13 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 1
     });
 
-    // 5 New
+    // 5 Wish List
     db.Item.create({
         item_name: "Viktor & Rolf Flowerbomb Women's 3.4-ounce Eau de Parfum Spray",
         item_UPC: 3360374000059,
         shelf_life: 38,
-        status: "New",
-        expiry_date: "2021-08-08",
+        status: "Wish List",
+        expiry_date: null,
         category: "Fragrance",
         price: 165.00,
         previously_used: 1,
@@ -465,6 +507,20 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 39.00,
         previously_used: 0,
         imageURL: "http://s.cdnsbn.com/images/products/10379799903.jpg",
+        UserId: 1
+    });
+
+    // 5 Wish List
+    db.Item.create({
+        item_name: "Herbivore Jade Facial Roller",
+        item_UPC: 853040006880,
+        shelf_life: null,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Other",
+        price: 30.00,
+        previously_used: 0,
+        imageURL: "https://s7d9.scene7.com/is/image/JCPenney/3312e28c-6fcb-11e8-a4d0-c97530db13cc?wid=800&hei=800&op_sharpen=1",
         UserId: 1
     });
 

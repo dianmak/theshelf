@@ -19,9 +19,13 @@ module.exports = function (app) {
     });
 
 
-    // add route loads the add.html page, where users can enter new books to the db
-    app.get("/add_item", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/shelf.html"));
+    // // add route loads the add.html page, where users can enter new books to the db
+    // app.get("/add_item", function (req, res) {
+    //     res.sendFile(path.join(__dirname, "../public/shelf.html"));
+    // });
+
+    app.get("/shelf", function (req, res) {
+        res.sendFile(path.join(__dirname, "../views/shelf.html"));
     });
 
 

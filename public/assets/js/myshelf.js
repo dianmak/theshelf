@@ -1,4 +1,14 @@
 $(function () {
+
+    var d = new Date();
+    var strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+    console.log(strDate);
+
+    var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
+    dt.setMonth(dt.getMonth() + 4);
+    console.log(dt.toLocaleDateString());
+
+
     $.get("/api/myshelf", function (result) {
         console.log(result);
         result.forEach(element => {
@@ -68,10 +78,6 @@ $(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            // console.log('Product: ' + response.items[0].title);
-            // console.log('UPC: ' + response.items[0].upc);
-            // console.log('Image: ' + response.items[0].images[0]);
-            // console.log('Price: ' + response.items[0].offers[0].price);
             $("#item_name").val(response.items[0].title).val();
             $("#price").val(response.items[0].offers[0].price).val();
             $("#imageURL").val(response.items[0].images[0]).val();
@@ -80,8 +86,22 @@ $(function () {
     })
 
     $("#addToShelf").on("click", function (event) {
-        console.log("Custom on click button registered");
         event.preventDefault();
+
+
+        if ($("#add_tax").is(':checked')) {
+            //how to capture logged in user tax rate?
+            var tax_rate = 0.0625;
+        } else {
+            var tax_rate = 0;
+        }
+
+        var shelf_life = Number($("#shelf_life").val().trim());
+        var d = new Date();
+        var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
+        dt.setMonth(dt.getMonth() + shelf_life);
+
+
         var newItem = {
             item_name: $("#item_name").val().trim(),
             item_UPC: $("#item_UPC").val().trim(),
@@ -90,7 +110,10 @@ $(function () {
             category: $("#category").val().trim(),
             price: $("#price").val().trim(),
             status: $("#status").val().trim(),
-            label: $("#tags").val().trim()
+            label: $("#tag").val().trim(),
+            tax: $("#price").val().trim() * tax_rate,
+            expiry_date: dt.toLocaleDateString()
+
         };
 
         console.log(newItem);
@@ -114,11 +137,12 @@ $(function () {
         $("#item_name").val("");
         $("#imageURL").val("");
         $("#shelf_life").val("");
-        $("#category").val("");
-        $("#status").val("");
+        // $("#category").val("");
+        // $("#status").val("");
         $("#price").val("");
         $("#item_UPC").val("")
-        $("#tags").val("")
+        $("#tag").val("")
+        $('input[type="checkbox"]').prop('checked', true);
     }
 
     // Save changes made to existing item

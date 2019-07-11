@@ -8,7 +8,7 @@ $(function () {
             <div class="card-body">
                 <h5 class="card-title">${element.item_name}</h5>
                 <p class="card-text">Category: ${element.category}</p>
-                <a href="#" class="btn btn-primary">More</a>
+                <button type="button" class="btn btn-primary" onclick="viewMore()">More</button>
             </div>
             </div>
             `);
@@ -30,7 +30,7 @@ $(function () {
                 <div class="card-body">
                     <h5 class="card-title">${element.item_name}</h5>
                     <p class="card-text">Category: ${element.category}</p>
-                    <a href="#" class="btn btn-primary">More</a>
+                    <button type="button" class="btn btn-primary more">More</button>
                 </div>
                 </div>
                 `);
@@ -115,7 +115,34 @@ $(function () {
         $("#price").val("");
     }
 
-    //edit item
+    //see more
+    function viewMore() {
+        e.preventDefault()
+        console.log(this);
+        $("#modals").append(`
+
+        <!-- Modal -->
+        <div class="modal fade" id="viewmore" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Enter UPC to search for product</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" id="editItem">Edit Item</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="retireItem>I am finished with this item.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `);
+
+        $("#viewmore").modal("show");
+    }
 
 
 });

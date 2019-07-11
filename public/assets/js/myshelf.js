@@ -26,7 +26,7 @@ $(function () {
             result.forEach(element => {
                 $("#shelfdisplay").append(`
                 <div class="d-inline-block card" style="width: 18rem;">
-                <img src=${element.imageURL} class="card-img-top img-fluid" alt="...">
+                <img src=${element.imageURL} class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${element.item_name}</h5>
                     <p class="card-text">Category: ${element.category}</p>
@@ -74,7 +74,7 @@ $(function () {
             // console.log('Price: ' + response.items[0].offers[0].price);
             $("#item_name").val(response.items[0].title).val();
             $("#price").val(response.items[0].offers[0].price).val();
-            $("#item_img").val(response.items[0].images[0]).val();
+            $("#imageURL").val(response.items[0].images[0]).val();
         });
 
     })
@@ -84,12 +84,16 @@ $(function () {
         event.preventDefault();
         var newItem = {
             item_name: $("#item_name").val().trim(),
-            item_img: $("#item_img").val().trim(),
+            item_UPC: $("#item_UPC").val().trim(),
+            imageURL: $("#imageURL").val().trim(),
             shelf_life: $("#shelf_life").val().trim(),
             category: $("#category").val().trim(),
             price: $("#price").val().trim(),
-            status: $("#status").val().trim()
+            status: $("#status").val().trim(),
+            label: $("#tags").val().trim()
         };
+
+        console.log(newItem);
 
         addItem(newItem);
         clear();
@@ -108,11 +112,13 @@ $(function () {
     // Empty each input box by replacing the value with an empty string
     function clear() {
         $("#item_name").val("");
-        $("#item_img").val("");
+        $("#imageURL").val("");
         $("#shelf_life").val("");
         $("#category").val("");
         $("#status").val("");
         $("#price").val("");
+        $("#item_UPC").val("")
+        $("#tags").val("")
     }
 
     //see more

@@ -23,6 +23,10 @@ module.exports = function (sequelize, DataTypes) {
         birthday: {
             type: DataTypes.DATEONLY,
             allowNull: true
+        },
+        tax_rate: {
+            type: DataTypes.DECIMAL(10, 4),
+            allowNull: true
         }
     });
 

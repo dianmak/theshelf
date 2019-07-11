@@ -50,6 +50,14 @@ module.exports = function (sequelize, DataTypes) {
                 min: 0
             }
         },
+        tax: {
+            type: DataTypes.NUMERIC(6, 2),
+            allowNull: true,
+            validate: {
+                min: 0
+            }
+        },
+      
         rating: {
             type: DataTypes.INTEGER,
             allowNull: true,

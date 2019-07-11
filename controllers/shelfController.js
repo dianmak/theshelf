@@ -98,6 +98,7 @@ router.put("/api/user/create", function (req, res) {
     });
 });
 
+
 // delete user profile
 router.delete("/api/user/delete/:email", function (req, res) {
     models.User.destroy({ where: { email: req.params.email } }).then(function (result) {

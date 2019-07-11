@@ -70,7 +70,7 @@ db.sequelize.sync({ force: true }).then(function () {
     });
 
     //=============================================================DATA FOR TESTING=============================================================
-    db.User.create({ email: "shelf@trilogy.com", name: "Kelly" });
+    db.User.create({ email: "shelf@trilogy.com", name: "Kelly", tax_rate: 0.0625 });
     // Makeup Items
     // 1 In Use
     db.Item.create({

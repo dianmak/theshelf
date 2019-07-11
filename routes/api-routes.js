@@ -23,7 +23,9 @@ module.exports = function (app) {
             price: req.body.price,
             imageURL: req.body.imageURL,
             status: req.body.status,
-            label: req.body.label
+            label: req.body.label,
+            tax: req.body.tax,
+            expiry_date: req.body.expiry_date
         })
             .then(function (dbItem) {
                 res.json(dbItem);

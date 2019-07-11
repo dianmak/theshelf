@@ -194,8 +194,9 @@
     <script src='/assets/js/myshelf.js'></script>
 
     <script>
-        function viewMore() {
-            console.log(this);
+        function viewMore(id) {
+
+            console.log(id);
             $("#modals").append(`
 
         <!-- Modal -->
@@ -205,21 +206,79 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Enter UPC to search for product</h4>
+                        <h4 class="modal-title">Edit Item</h4>
                     </div>
                     <div class="modal-body">
+                    <form action="" method="POST" role="form">
+                            <div class="form-group">
+                                <label for="">Item Name</label>
+                                <input type="text" class="form-control" id="item_name_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Image Link</label>
+                                <input type="text" class="form-control" id="imageURL_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Shelf Life (in months)</label>
+                                <input type="number" class="form-control" id="shelf_life_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Status</label>
+                                <select class="form-control" id="status_edit">
+                                    <option value="In Use">In Use</option>
+                                    <option value="New">New</option>
+                                    <option value="History">History</option>
+                                    <option value="Wish List">Wish List</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="category_edit">
+                                    <option value="Makeup">Makeup</option>
+                                    <option value="Skincare">Skincare</option>
+                                    <option value="Hair">Hair</option>
+                                    <option value="Fragrance">Fregnance</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tags</label>
+                                <input type="text" class="form-control" id="tags_edit" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price</label>
+                                <input type="number" class="form-control" id="price_edit" placeholder="">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="addTax_edit">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Calculate Tax
+                                </label>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="editItem">Edit Item</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" id="retireItem>I am finished with this item.</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" id="editItem" value=${id} >Save Changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="retireItem" value=${id} >I am finished with this item.</button>
                     </div>
                 </div>
             </div>
         </div>
         `);
 
+            $.get("/api/items/id/" + id, function (result) {
+                $("#item_name_edit").val(result.item_name);
+                $("#imageURL_edit").val(result.imageURL);
+                $("#shelf_life_edit").val(result.shelf_life);
+                $("#status_edit").val(result.status).prop('selected', true);
+                $("#category_edit").val(result.category).prop('selected', true);
+                $("#tags_edit").val(result.label);
+                $("#price_edit").val(result.price);
+            });
+
             $("#viewmore").modal("show");
         }
+
     </script>
 
 </body>

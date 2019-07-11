@@ -8,7 +8,7 @@ $(function () {
             <div class="card-body">
                 <h5 class="card-title">${element.item_name}</h5>
                 <p class="card-text">Category: ${element.category}</p>
-                <button type="button" class="btn btn-primary" onclick="viewMore()">More</button>
+                <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
             </div>
             </div>
             `);
@@ -30,7 +30,7 @@ $(function () {
                 <div class="card-body">
                     <h5 class="card-title">${element.item_name}</h5>
                     <p class="card-text">Category: ${element.category}</p>
-                    <button type="button" class="btn btn-primary more">More</button>
+                    <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
                 </div>
                 </div>
                 `);
@@ -121,34 +121,44 @@ $(function () {
         $("#tags").val("")
     }
 
-    //see more
-    function viewMore() {
-        e.preventDefault()
-        console.log(this);
-        $("#modals").append(`
+    // Save changes made to existing item
+    $(document).on("click", "#editItem", function (event) {
+        event.preventDefault();
 
-        <!-- Modal -->
-        <div class="modal fade" id="viewmore" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Enter UPC to search for product</h4>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="editItem">Edit Item</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" id="retireItem>I am finished with this item.</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `);
+        let thisid = $(this).prop("value");
+        let edits = {
+            item_name: $("#item_name_edit").val(),
+            imageURL: $("#imageURL_edit").val(),
+            shelf_life: $("#shelf_life_edit").val(),
+            status: $("#status_edit").val(),
+            category: $("#category_edit").val(),
+            label: $("#tags_edit").val(),
+            price: $("#price_edit").val(),
+            id: thisid
+        };
 
-        $("#viewmore").modal("show");
-    }
+        $.ajax({
+            url: "/api/myshelf/edititem",
+            method: "PUT",
+            data: edits
+        }).then(function (response) {
+            console.log(response);
+        });
+    });
 
+    $(document).on("click", "#retireItem", function (event) {
+
+        event.preventDefault();
+        console.log("HERE");
+        let thisid = $(this).prop("value");
+
+        $.ajax({
+            url: "/api/myshelf/retireitem",
+            method: "DELETE",
+            data: { id: thisid }
+        }).then(function (response) {
+            console.log(response);
+        });
+    });
 
 });

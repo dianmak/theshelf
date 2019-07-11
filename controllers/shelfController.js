@@ -42,6 +42,13 @@ router.get("/api/myshelf", function (req, res) {
     });
 });
 
+//get ONE item by id
+router.get("/api/items/id/:id", function (req, res) {
+    models.Item.findByPk(req.params.id).then(function (data) {
+        res.json(data);
+    });
+});
+
 // add an item
 router.post("/api/myshelf/additem", function (req, res) {
     Item.create(req.body).then(function (result) {
@@ -50,24 +57,38 @@ router.post("/api/myshelf/additem", function (req, res) {
 });
 
 // change something about an item
-router.put("/api/myshelf/updateitem", function (req, res) {
-    models.Item.update(
+router.put("/api/myshelf/edititem", function (req, res) {
+    console.log(req.body);
+    models.Item.update({
+        item_name: req.body.item_name,
+        imageURL: req.body.imageURL,
+        shelf_life: req.body.shelf_life,
+        status: req.body.status,
+        category: req.body.category,
+        label: req.body.label,
+        price: req.body.price
+    }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (result) {
+            if (result.changedRows === 0) {
+                // If no rows were changed, then the ID must not exist, so 404
+                return res.status(404).end();
+            }
+            res.status(200).end();
 
-    ).then(function (result) {
-        if (result.changedRows === 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        }
-        res.status(200).end();
-
-    });
+        });
 });
 
 // retire an item after ending use
 router.delete("/api/myshelf/retireitem", function (req, res) {
     // Change item status from In Use to History
+    // let id = parseInt(req.body);
+    console.log(typeof req.body);
+    console.log(req.body);
     models.Item.update(
-        { Status: "History" },
+        { status: "History" },
         {
             where: { id: req.body.id }
         }).then(function (result) {
@@ -75,6 +96,7 @@ router.delete("/api/myshelf/retireitem", function (req, res) {
                 // If no rows were changed, then the ID must not exist, so 404
                 return res.status(404).end();
             }
+            console.log("HEREEEE");
             res.status(200).end();
         });
     // Increase number of previously used items by 1

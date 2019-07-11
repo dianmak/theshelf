@@ -14,7 +14,8 @@
         crossorigin="anonymous"></script>
 
     <!-- FONT REFERENCE -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text|Nunito+Sans:400,700&display=swap"
+        rel="stylesheet">
 
     <!-- CHART -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></script>
@@ -25,12 +26,14 @@
 
     <!-- FAVICON -->
 
-    <title>Document</title>
+    <title>mywallet</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <a class="navbar-brand" href="#">The Shelf</a>
+        <a class="navbar-brand" href="#">
+            <img src="./assets/images/shelf-logo.png" width="100" height="30" alt="">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,6 +53,11 @@
         </div>
     </nav>
 
+    <div class="parallax-three">
+        <h1 id="wh">i like my money right where i can see it... on my shelf</h1>
+
+    </div>
+
     <div class="container-fluid text-center" id="wallet">
         <div class="row">
             <div class="col-md-12">
@@ -62,8 +70,8 @@
                     <canvas id="totalSpent" width="100" height="100"></canvas>
                 </div>
                 <div class="col-md-4 mx-auto">
-                        <canvas id="secondChart" width="100" height="100"></canvas>
-                    </div>
+                    <canvas id="secondChart" width="100" height="100"></canvas>
+                </div>
             </div>
         </div>
 

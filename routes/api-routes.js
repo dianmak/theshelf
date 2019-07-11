@@ -17,11 +17,13 @@ module.exports = function (app) {
         console.log(req.body);
         db.Item.create({
             item_name: req.body.item_name,
+            item_UPC: req.body.item_UPC,
             shelf_life: req.body.shelf_life,
             category: req.body.category,
             price: req.body.price,
-            item_img: req.body.item_img,
-            status: req.body.status
+            imageURL: req.body.imageURL,
+            status: req.body.status,
+            label: req.body.label
         })
             .then(function (dbItem) {
                 res.json(dbItem);

@@ -7,7 +7,7 @@
 const express = require("express");
 
 //cors package needs ot be install to support https API calls (npm install cors)
-// const cors = require("cors");
+const cors = require("cors");
 const https = require("https");
 // Sets up the Express App
 // =============================================================
@@ -26,41 +26,41 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-//require("./routes/html-routes.js")(app);
-//require("./routes/author-api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 const router = require("./controllers/shelfController");
 app.use(router);
 
 // CORS enable to use API - need to install cors package- npm install cors
-// app.use(cors());
+app.use(cors());
 
-// app.get('/lookup/:upc', function (request, res) {
-//     var opts = {
-//         hostname: 'api.upcitemdb.com',
-//         path: '/prod/trial/lookup',
-//         method: 'POST',
-//         headers: {
-//             "Content-Type": "application/json",
-//         }
-//     }
+app.get('/lookup/:upc', function (request, res) {
+    var opts = {
+        hostname: 'api.upcitemdb.com',
+        path: '/prod/trial/lookup',
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }
 
-//     var req = https.request(opts, function (resp) {
-//         resp.on('data', function (UPCoutput) {
-//             var UPCparsed = JSON.parse(UPCoutput);
-//             res.json(UPCparsed);
-//         })
-//     })
+    var req = https.request(opts, function (resp) {
+        resp.on('data', function (UPCoutput) {
+            var UPCparsed = JSON.parse(UPCoutput);
+            res.json(UPCparsed);
+        })
+    })
 
-//     req.on('error', function (e) {
-//         res.send('problem with request: ' + e.message);
-//     });
-//     console.log(request.params);
-//     const userUPC = request.params.upc;
-//     const UPC = { upc: userUPC }
-//     JSON.stringify(UPC)
-//     req.write(JSON.stringify(UPC))
-//     req.end()
-// })
+    req.on('error', function (e) {
+        res.send('problem with request: ' + e.message);
+    });
+    console.log(request.params);
+    const userUPC = request.params.upc;
+    const UPC = { upc: userUPC }
+    JSON.stringify(UPC)
+    req.write(JSON.stringify(UPC))
+    req.end()
+})
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

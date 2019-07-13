@@ -152,7 +152,7 @@ router.get("/api/wallet/table/:category", function (req, res) {
 // add new item
 router.post("/api/items", function (req, res) {
     console.log(req.body);
-    db.Item.create({
+    models.Item.create({
         item_name: req.body.item_name,
         item_UPC: req.body.item_UPC,
         shelf_life: req.body.shelf_life,
@@ -164,8 +164,8 @@ router.post("/api/items", function (req, res) {
         tax: req.body.tax,
         expiry_date: req.body.expiry_date
     })
-        .then(function (dbItem) {
-            res.json(dbItem);
+        .then(function (modelsItem) {
+            res.json(modelsItem);
         });
 });
 

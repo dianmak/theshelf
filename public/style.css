@@ -1,15 +1,19 @@
+.warning {
+    color: deeppink;
+}
+
 h1 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
 }
 
-h6{
+h6 {
     font-family: 'Libre Barcode 39 Text', cursive;
     font-size: 8rem;
 }
 
-#wh{
-    color:white;
+#wh {
+    color: white;
 }
 
 body {
@@ -19,10 +23,8 @@ body {
 .parallax {
     /* The image used */
     background-image: url("./assets/images/hero-placeholder.jpg");
-
     /* Set a specific height */
     height: 700px;
-
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -35,10 +37,8 @@ body {
 .parallax-two {
     /* The image used */
     background-image: url("./assets/images/shelf-header.jpg");
-
     /* Set a specific height */
     height: 400px;
-
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -51,10 +51,8 @@ body {
 .parallax-three {
     /* The image used */
     background-image: url("./assets/images/wallet-header.jpg");
-
     /* Set a specific height */
     height: 400px;
-
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -65,39 +63,39 @@ body {
 }
 
 .row {
-    display:block;
-    padding:50px;
+    display: block;
+    padding: 50px;
 }
 
-.btn-lg{
-    margin:50px;
+.btn-lg {
+    margin: 50px;
 }
 
-#shelf-glance{
-    background:#E6E6E6;
+#shelf-glance {
+    background: #E6E6E6;
 }
 
-#budget-glance{
-    background:white;
+#budget-glance {
+    background: white;
 }
 
-.footer{
-    background:black;
+.footer {
+    background: black;
     color: white;
 }
 
-.d-inline-block{
-    align-self:center!important;
+.d-inline-block {
+    align-self: center!important;
     padding: .5%;
     margin: .5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card-img-top{
+.card-img-top {
     padding: 20%;
 }
 
-.btn{
+.btn {
     background: black;
     border: grey;
 }

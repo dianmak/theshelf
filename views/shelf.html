@@ -111,6 +111,7 @@
                             <div class="form-group">
                                 <label for="">Item UPC (see the number below barcode)</label>
                                 <input type="text" class="form-control" id="item_UPC" placeholder="">
+                                <p id="item_UPC_warning_msg" class="warning"></p>
                                 <br>
                                 <button type="button" class="btn btn-success" id="searchByUPC">Search</button>
                                 <div id="item_preview"></div>
@@ -120,6 +121,7 @@
                             <div class="form-group">
                                 <label for="">Item Name</label>
                                 <input type="text" class="form-control" id="item_name" placeholder="">
+                                <p id="item_name_warning_msg" class="warning"></p>
                             </div>
                             <div class="form-group">
                                 <label for="">Image Link</label>
@@ -168,7 +170,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="addToShelf">Add to
+                        <button type="button" class="btn btn-success" id="addToShelf">Add to
                             Shelf</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
                     </div>

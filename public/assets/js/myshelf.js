@@ -99,12 +99,9 @@ $(function () {
     $("#addToShelf").on("click", function (event) {
         event.preventDefault();
 
-<<<<<<< HEAD
-=======
         $("#item_name_warning_msg").empty();
 
         //Here we will determine if tax rate needs to be applied to the product
->>>>>>> 700756818c87df36a7d13be101e915fc36678702
         if ($("#add_tax").is(':checked')) {
             //how to capture logged in user tax rate?
             var tax_rate = 0.0625;

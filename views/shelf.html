@@ -35,13 +35,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Home </a>
+                    <a class="nav-link" href="./">Home </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="./shelf.html">My Shelf<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./shelf">My Shelf<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./wallet.html">My Wallet</a>
+                    <a class="nav-link" href="./wallet">My Wallet</a>
                 </li>
             </ul>
         </div>
@@ -57,8 +57,11 @@
             <div class="col-md-12">
 
                 <h1>My Shelf</h1>
-                <p>Placeholder Text</p>
-
+                <p>Add new products, edit existing ones or retire a product you are finished using.</p>
+                <!-- Button to trigger add Modal -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addByUPC">Add New
+                    Product</button>
+                <br>
                 <div class="btn-group btn-group-toggle text-center" data-toggle="buttons">
                     <label class="btn btn-secondary">
                         <input class="statusbutton" type="radio" name="options" value="In Use" autocomplete="off"
@@ -94,8 +97,7 @@
 
     <div class="container" id="modals">
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addByUPC">Add New
-            Product</button>
+
 
         <!-- Modal -->
         <div class="modal fade" id="addByUPC" role="dialog">
@@ -204,7 +206,6 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Edit Item</h4>
                     </div>
                     <div class="modal-body">

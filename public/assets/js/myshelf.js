@@ -88,7 +88,6 @@ $(function () {
     $("#addToShelf").on("click", function (event) {
         event.preventDefault();
 
-
         if ($("#add_tax").is(':checked')) {
             //how to capture logged in user tax rate?
             var tax_rate = 0.0625;

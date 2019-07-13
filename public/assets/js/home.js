@@ -9,7 +9,7 @@ $(function () {
             <div class="card-body">
                 <h5 class="card-title">${element.item_name}</h5>
                 <p class="card-text">Category: ${element.category}</p>
-                <a href="#" class="btn btn-primary">More</a>
+                <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
             </div>
             </div>
             `);

@@ -13,6 +13,7 @@ const https = require("https");
 // =============================================================
 const app = express();
 const PORT = process.env.PORT || 8080;
+const session = require("express-session");
 
 // Requiring our models for syncing
 const db = require("./models");
@@ -20,14 +21,15 @@ const db = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({ secret: "sammy" }));
 
 // Static directory
 app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+// require("./routes/api-routes.js")(app);
 const router = require("./controllers/shelfController");
 app.use(router);
 
@@ -71,6 +73,9 @@ db.sequelize.sync({ force: true }).then(function () {
 
     //=============================================================DATA FOR TESTING=============================================================
     db.User.create({ email: "shelf@trilogy.com", name: "Kelly", tax_rate: 0.0625 });
+    db.User.create({ email: "mark@techsonmusic.com", name: "Mark", tax_rate: 0.0625 });
+
+    // Kelly's items
     // Makeup Items
     // 1 In Use
     db.Item.create({
@@ -124,7 +129,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Makeup",
         price: 20.00,
         previously_used: 0,
-        imageURL: "http://s7d9.scene7.com/is/image/LordandTaylor/607845014263_main?$PDPLARGE$",
+        imageURL: "http://ecx.images-amazon.com/images/I/31vTnbdijyL._SL160_.jpg",
         UserId: 1
     });
 
@@ -354,21 +359,7 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 1
     });
 
-    // 4 History
-    db.Item.create({
-        item_name: "Living Proof Restore Shampoo",
-        item_UPC: 148221284448,
-        shelf_life: 18,
-        status: "History",
-        expiry_date: "2019-04-16",
-        category: "Hair",
-        price: 24.00,
-        previously_used: 1,
-        imageURL: "http://ecx.images-amazon.com/images/I/313XIQlMkVL._SL160_.jpg",
-        UserId: 1
-    });
-
-    // 5 Wish List
+    // 4 Wish List
     db.Item.create({
         item_name: "Briogeo Blossom & Bloom Volumizing Conditioner",
         item_UPC: 696859244131,
@@ -523,6 +514,81 @@ db.sequelize.sync({ force: true }).then(function () {
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/3312e28c-6fcb-11e8-a4d0-c97530db13cc?wid=800&hei=800&op_sharpen=1",
         UserId: 1
     });
+
+
+    // Mark's items
+    // Makeup
+    db.Item.create({
+        item_name: "Tarte Treasure Pot Glitter Gel",
+        item_UPC: 846733031832,
+        shelf_life: null,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Makeup",
+        price: 18.00,
+        previously_used: 0,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Tarte Treasure Pot Glitter Gel",
+        item_UPC: 846733031832,
+        shelf_life: null,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Makeup",
+        price: 18.00,
+        previously_used: 0,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "MILK MAKEUP Glitter Stick",
+        item_UPC: 814333022857,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: null,
+        category: "Makeup",
+        price: 30.00,
+        previously_used: 1,
+        imageURL: "https://s7d9.scene7.com/is/image/JCPenney/DP0207201807071136M?wid=800&hei=800&op_sharpen=1",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Anastasia Beverly Hills Loose Glitter",
+        item_UPC: 689304230049,
+        shelf_life: null,
+        status: "History",
+        expiry_date: null,
+        category: "Makeup",
+        price: 15.00,
+        previously_used: 2,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/10238887_fpx.tif?wid=300&fmt=jpeg&qlt=100",
+        UserId: 2
+    });
+
+    // Skincare
+    db.Item.create({
+        item_name: "Anastasia Beverly Hills Loose Glitter",
+        item_UPC: 689304230049,
+        shelf_life: null,
+        status: "History",
+        expiry_date: null,
+        category: "Makeup",
+        price: 15.00,
+        previously_used: 2,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/10238887_fpx.tif?wid=300&fmt=jpeg&qlt=100",
+        UserId: 2
+    });
+
+    // Hair
+
+    // Fragrance
+
+    // Other
 
 });
 

@@ -1,5 +1,5 @@
 const express = require("express");
-
+const path = require("path");
 const router = express.Router();
 
 // Import the model to use its database functions.
@@ -147,6 +147,44 @@ router.get("/api/wallet/table/:category", function (req, res) {
     }).then(function (result) {
         res.json(result);
     })
+});
+
+// add new item
+router.post("/api/items", function (req, res) {
+    console.log(req.body);
+    db.Item.create({
+        item_name: req.body.item_name,
+        item_UPC: req.body.item_UPC,
+        shelf_life: req.body.shelf_life,
+        category: req.body.category,
+        price: req.body.price,
+        imageURL: req.body.imageURL,
+        status: req.body.status,
+        label: req.body.label,
+        tax: req.body.tax,
+        expiry_date: req.body.expiry_date
+    })
+        .then(function (dbItem) {
+            res.json(dbItem);
+        });
+});
+
+// HTML routes
+// Each of the below routes just handles the HTML page that the user gets sent to.
+
+// index route loads view.html
+router.get("/", function (req, res) {
+    req.session.userID = 10;
+    res.sendFile(path.join(__dirname, "../views/index.html"));
+});
+
+router.get("/wallet", function (req, res) {
+    console.log(req.session.userID);
+    res.sendFile(path.join(__dirname, "../views/wallet.html"));
+});
+
+router.get("/shelf", function (req, res) {
+    res.sendFile(path.join(__dirname, "../views/shelf.html"));
 });
 
 // Export routes for server.js to use.

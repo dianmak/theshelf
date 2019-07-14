@@ -21,6 +21,7 @@ $(function () {
         e.preventDefault();
 
         $("#shelfdisplay").empty();
+        $("#tagbuttons").empty();
         // console.log($(this).attr("value"));
         $.get("/api/items/status/" + $(this).attr("value"), function (result) {
             console.log(result);
@@ -35,6 +36,39 @@ $(function () {
                 </div>
                 </div>
                 `);
+            });
+        });
+    });
+
+    //when My Tags button is clicked, clear the page and dynamically render buttons with all user tags
+    $("#mytags").on("change", function (e) {
+        e.preventDefault();
+
+        $("#shelfdisplay").empty();
+        $("#tagbuttons").empty();
+        $("#tagbuttons").append(`<br><div id ="labels" class="btn-group btn-group-toggle text-center" data-toggle="buttons"></div>`);
+        $("#labels").append(`<div><label class="btn btn-secondary">
+        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Moisturizer">Moisturizer</label><label class="btn btn-secondary">
+        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Eyes">Eyes</label></div>`);
+
+        $(".tagsbutton").on("change", function (e) {
+            e.preventDefault();
+            $("#shelfdisplay").empty();
+
+            $.get("/api/items/tag/" + $(this).attr("value"), function (result) {
+                console.log(result);
+                result.forEach(element => {
+                    $("#shelfdisplay").append(`
+                <div class="d-inline-block card" style="width: 18rem;">
+                <img src=${element.imageURL} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${element.item_name}</h5>
+                    <p class="card-text">Category: ${element.category}</p>
+                    <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
+                </div>
+                </div>
+                `);
+                });
             });
         });
     });
@@ -144,7 +178,7 @@ $(function () {
             var tax_rate = 0;
         }
 
-        //Here we calculate the expiry date based on today's date and user provided shelf life 
+        //Here we calculate the expiry date based on today's date and user provided shelf life
         shelf_life = Number($("#shelf_life").val().trim());
         if (shelf_life > !0) {
             shelf_life = 0

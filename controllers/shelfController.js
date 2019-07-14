@@ -51,6 +51,13 @@ router.get("/api/items/expiring", function (req, res) {
     });
 });
 
+//get all tags
+router.get("/api/items/tag/:tag", function (req, res) {
+    models.Item.findAll({ where: { label: req.params.tag } }).then(function (data) {
+        res.json(data);
+    });
+});
+
 //get ONE item by id
 router.get("/api/items/id/:id", function (req, res) {
     models.Item.findByPk(req.params.id).then(function (data) {

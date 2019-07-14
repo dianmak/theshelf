@@ -89,7 +89,7 @@ db.sequelize.sync({ force: true }).then(function () {
         previously_used: 5,
         imageURL: "http://s.cdnsbn.com/images/products/20885870902.jpg",
         UserId: 1,
-        label: "Eye Makeup"
+        label: "Eyes"
     });
 
     // 2 In Use
@@ -174,7 +174,7 @@ db.sequelize.sync({ force: true }).then(function () {
         previously_used: 0,
         imageURL: "https://dyn-images.hsn.com/is/image/HomeShoppingNetwork/310331?$prodzoom$",
         UserId: 1,
-        label: "Eye Makeup"
+        label: "Eyes"
     });
 
     // 8 History

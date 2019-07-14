@@ -42,6 +42,19 @@ router.get("/api/myshelf", function (req, res) {
     });
 });
 
+//get items in use which are expiring next
+router.get("/api/items/expiring", function (req, res) {
+    models.Item.findAll({
+        limit: 4,
+        where: {
+            status: "In Use"
+        },
+        order: [['expiry_date', 'ASC']]
+    }).then(function (data) {
+        res.json(data);
+    });
+});
+
 //get ONE item by id
 router.get("/api/items/id/:id", function (req, res) {
     models.Item.findByPk(req.params.id).then(function (data) {

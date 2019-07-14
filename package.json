@@ -20,6 +20,7 @@
   "homepage": "https://github.com/dianmak/theshelf#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "date.js": "^0.3.3",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "express-sessions": "^1.0.6",

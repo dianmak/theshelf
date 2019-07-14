@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
+        media="screen" />
 
     <!-- FONT REFERENCE -->
     <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text|Nunito+Sans:400,700&display=swap"
@@ -59,6 +65,7 @@
                 <h1>My Shelf</h1>
                 <p>Add new products, edit existing ones or retire a product you are finished using.</p>
                 <!-- Button to trigger add Modal -->
+
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addByUPC">Add New
                     Product</button>
                 <br>
@@ -105,32 +112,37 @@
 
                 <!-- Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <!-- <div class="modal-header">
                         <h4 class="modal-title">Enter UPC to search for product</h4>
-                    </div>
+                    </div> -->
                     <div class="modal-body">
-                        <form action="" method="POST" role="form">
-                            <div class="form-group">
-                                <label for="">Item UPC (see the number below barcode)</label>
+
+                        <form class="form-horizontal" action="" method="POST" role="form">
+                            <div class="form-horizontal" class="form-group" class="tooltip">
+                                <span class="tooltiptext">Helpful
+                                    tip</span>
+                                <label for="">Item UPC
+                                    <i class="fa fa-barcode" aria-hidden="true" 2x></i></label>
                                 <input type="text" class="form-control" id="item_UPC" placeholder="">
                                 <p id="item_UPC_warning_msg" class="warning"></p>
-                                <br>
                                 <button type="button" class="btn btn-success" id="searchByUPC">Search</button>
                                 <div id="item_preview"></div>
                             </div>
                         </form>
-                        <form action="" method="POST" role="form">
+                        <br>
+                        <form class="form-horizontal" action="" method="POST" role="form">
                             <div class="form-group">
-                                <label for="">Item Name</label>
+                                <label for="">Item Name <i class="fa fa-exclamation" aria-hidden="true" 2x></i></label>
                                 <input type="text" class="form-control" id="item_name" placeholder="">
                                 <p id="item_name_warning_msg" class="warning"></p>
                             </div>
                             <div class="form-group">
-                                <label for="">Image Link</label>
+                                <label for="">Image Link <i class="fa fa-picture-o" aria-hidden="true" 4x></i></label>
                                 <input type="text" class="form-control" id="imageURL" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label for="">Shelf Life (in months)</label>
+                                <label for="">Shelf Life (in months) <i class="fa fa-question" aria-hidden="true"
+                                        2x></i></label>
                                 <input type="number" class="form-control" id="shelf_life" placeholder="">
                             </div>
                             <div class="form-group">
@@ -153,7 +165,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Tag</label>
+                                <label for="">Tag <i class="fa fa-tag" aria-hidden="true" 2x></i></label>
                                 <input type="text" class="form-control" id="tag" placeholder="">
                             </div>
                             <div class="form-group">
@@ -168,13 +180,12 @@
                             </div>
                         </form>
 
-                        <br>
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-success" id="addToShelf">Add to
+                        <button type="button" class="btn btn-success btn-primary " id="addToShelf">Add to
                             Shelf</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+                        <button type="button" class="btn btn-success btn-primary" data-dismiss="modal">Go Back</button>
                     </div>
 
                 </div>

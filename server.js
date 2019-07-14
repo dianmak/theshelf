@@ -88,7 +88,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 20.00,
         previously_used: 5,
         imageURL: "http://s.cdnsbn.com/images/products/20885870902.jpg",
-        UserId: 1
+        UserId: 1,
+        label: "Eye Makeup"
     });
 
     // 2 In Use
@@ -172,7 +173,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 49.00,
         previously_used: 0,
         imageURL: "https://dyn-images.hsn.com/is/image/HomeShoppingNetwork/310331?$prodzoom$",
-        UserId: 1
+        UserId: 1,
+        label: "Eye Makeup"
     });
 
     // 8 History
@@ -201,7 +203,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 68.00,
         previously_used: 0,
         imageURL: "https://images.qvc.com/is/image/a/65/a291365.001?$uslarge$",
-        UserId: 1
+        UserId: 1,
+        label: "Moisturizer"
     });
 
     // 2 In Use
@@ -299,7 +302,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 36.00,
         previously_used: 0,
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/DP1101201706383538M?wid=800&hei=800&op_sharpen=1",
-        UserId: 1
+        UserId: 1,
+        label: "Moisturizer"
     });
 
     // 9 Wish List
@@ -456,7 +460,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 18.00,
         previously_used: 4,
         imageURL: "http://ecx.images-amazon.com/images/I/41kuCDRkKWL._SL160_.jpg",
-        UserId: 1
+        UserId: 1,
+        label: "Tool"
     });
 
     // 2 In Use
@@ -470,7 +475,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 42.00,
         previously_used: 2,
         imageURL: "http://ecx.images-amazon.com/images/I/31y2kQ-GPGL._SL160_.jpg",
-        UserId: 1
+        UserId: 1,
+        label: "Moisturizer"
     });
 
     // 3 History
@@ -484,7 +490,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 45.00,
         previously_used: 0,
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/DP0708201617180776M?wid=800&hei=800&op_sharpen=1",
-        UserId: 1
+        UserId: 1,
+        label: "Tool"
     });
 
     // 4 New
@@ -512,7 +519,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 30.00,
         previously_used: 0,
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/3312e28c-6fcb-11e8-a4d0-c97530db13cc?wid=800&hei=800&op_sharpen=1",
-        UserId: 1
+        UserId: 1,
+        label: "Tool"
     });
 
 
@@ -549,7 +557,7 @@ db.sequelize.sync({ force: true }).then(function () {
         item_UPC: 814333022857,
         shelf_life: null,
         status: "In Use",
-        expiry_date: null,
+        expiry_date: "2019-07-13",
         category: "Makeup",
         price: 30.00,
         previously_used: 1,

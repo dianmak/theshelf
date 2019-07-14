@@ -100,6 +100,7 @@ $(function () {
         event.preventDefault();
 
         $("#item_name_warning_msg").empty();
+        $("#item_UPC_warning_msg").empty();
 
         //Here we will determine if tax rate needs to be applied to the product
         if ($("#add_tax").is(':checked')) {
@@ -139,8 +140,9 @@ $(function () {
             // Here we pass placeholder image to the database if the imageURL form field is blank
             if ($("#imageURL").val().trim() === "") {
 
-                //CAN WE COME UP WITH A FUN PLACEHOLDER IMAGE?
-                var imageURL = "http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png"
+
+
+                var imageURL = "assets/images/product-image-placeholder.jpg"
             } else {
                 var imageURL = $("#imageURL").val().trim()
             };
@@ -187,6 +189,7 @@ $(function () {
         $("#item_UPC").val("")
         $("#tag").val("")
         $('input[type="checkbox"]').prop('checked', true);
+        $("#item_UPC_warning_msg").empty();
     }
 
     // Save changes made to existing item

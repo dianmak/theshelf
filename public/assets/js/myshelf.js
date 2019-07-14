@@ -1,7 +1,5 @@
 $(function () {
 
-
-
     $.get("/api/myshelf", function (result) {
         console.log(result);
         result.forEach(element => {

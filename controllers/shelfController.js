@@ -1,11 +1,7 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
-
-// Import the model to use its database functions.
 const models = require("../models");
-
-// Create all our routes and set up logic within those routes where required.
 
 //get items by category
 router.get("/api/items/category/:category", function (req, res) {
@@ -21,7 +17,7 @@ router.get("/api/items/status/:status", function (req, res) {
     });
 });
 
-//home page
+//get most recently added items that are in use to display on home page
 router.get("/api/items/home", function (req, res) {
     models.Item.findAll({
         limit: 4,
@@ -84,9 +80,6 @@ router.put("/api/myshelf/edititem", function (req, res) {
 // retire an item after ending use
 router.delete("/api/myshelf/retireitem", function (req, res) {
     // Change item status from In Use to History
-    // let id = parseInt(req.body);
-    console.log(typeof req.body);
-    console.log(req.body);
     models.Item.update(
         { status: "History" },
         {
@@ -133,12 +126,14 @@ router.delete("/api/user/delete/:email", function (req, res) {
     });
 });
 
+// in use products for chart on home page
 router.get("/api/home/chart", function (req, res) {
     models.Item.findAll({ where: { status: "In Use" }, attributes: ["category", "price"] }).then(function (result) {
         res.json(result);
     });
 });
 
+// recently added products for table on wallet page
 router.get("/api/wallet/table/:category", function (req, res) {
     models.Item.findAll({
         limit: 5,
@@ -152,7 +147,7 @@ router.get("/api/wallet/table/:category", function (req, res) {
 // add new item
 router.post("/api/items", function (req, res) {
     console.log(req.body);
-    db.Item.create({
+    models.Item.create({
         item_name: req.body.item_name,
         item_UPC: req.body.item_UPC,
         shelf_life: req.body.shelf_life,
@@ -172,7 +167,6 @@ router.post("/api/items", function (req, res) {
 // HTML routes
 // Each of the below routes just handles the HTML page that the user gets sent to.
 
-// index route loads view.html
 router.get("/", function (req, res) {
     req.session.userID = 10;
     res.sendFile(path.join(__dirname, "../views/index.html"));

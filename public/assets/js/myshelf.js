@@ -53,6 +53,42 @@ $(function () {
 
     //add item by UPC code
 
+    //append popovers
+
+    $('[id="upc-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: '<img src="/assets/images/upc.jpg" alt="UPC" style="height:100px" class="center"><p>12 numeric digits found under item barcode</p>'
+    });
+
+    $('[id="item-name-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: '<p>Required</p>'
+    });
+
+    $('[id="shelf-life-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: '<img src="/assets/images/shelf_life.jpg" alt="Shelf Life" style="height:30px" class="center"><p>Enter number listed on item packaging</p>'
+    });
+    $('[id="tag-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: '<p>Enter custom label for your item</p>'
+    });
+    $('[id="img-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: '<p>Right click on item image, click on Copy image address, and paste the link</p>'
+    });
+
+
     // This .on("click") function will trigger the AJAX Call
     $("#searchByUPC").on("click", function (event) {
         // event.preventDefault() can be used to prevent an event's default behavior.

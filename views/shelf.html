@@ -118,12 +118,13 @@
                     <div class="modal-body">
 
                         <form class="form-horizontal" action="" method="POST" role="form">
-                            <div class="form-horizontal" class="form-group" class="tooltip">
-                                <span class="tooltiptext">Helpful
-                                    tip</span>
+                            <div class="form-horizontal" class="form-group">
                                 <label for="">Item UPC
-                                    <i class="fa fa-barcode" aria-hidden="true" 2x></i></label>
+                                    <span data-toggle="popover" id="upc-popover"><i class="fa fa-barcode"
+                                            aria-hidden="true" 2x></i></span>
+                                </label>
                                 <input type="text" class="form-control" id="item_UPC" placeholder="">
+                                <!-- Warning will be appendd here -->
                                 <p id="item_UPC_warning_msg" class="warning"></p>
                                 <button type="button" class="btn btn-success" id="searchByUPC">Search</button>
                                 <div id="item_preview"></div>
@@ -132,17 +133,20 @@
                         <br>
                         <form class="form-horizontal" action="" method="POST" role="form">
                             <div class="form-group">
-                                <label for="">Item Name <i class="fa fa-exclamation" aria-hidden="true" 2x></i></label>
+                                <label for="">Item Name <span data-toggle="popover" id="item-name-popover"><i
+                                            class="fa fa-exclamation" aria-hidden="true" 2x></i></span></label>
                                 <input type="text" class="form-control" id="item_name" placeholder="">
                                 <p id="item_name_warning_msg" class="warning"></p>
                             </div>
                             <div class="form-group">
-                                <label for="">Image Link <i class="fa fa-picture-o" aria-hidden="true" 4x></i></label>
+                                <label for="">Image Link <span data-toggle="popover" id="img-popover"><i
+                                            class="fa fa-picture-o" aria-hidden="true" 2x></i></label>
                                 <input type="text" class="form-control" id="imageURL" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label for="">Shelf Life (in months) <i class="fa fa-question" aria-hidden="true"
-                                        2x></i></label>
+                                <label for="">Shelf Life (in months) <span data-toggle="popover"
+                                        id="shelf-life-popover"><i class="fa fa-question" aria-hidden="true"
+                                            2x></i></span></label>
                                 <input type="number" class="form-control" id="shelf_life" placeholder="">
                             </div>
                             <div class="form-group">
@@ -165,7 +169,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Tag <i class="fa fa-tag" aria-hidden="true" 2x></i></label>
+                                <label for="">Tag <span data-toggle="popover" id="tag-popover"><i class="fa fa-tag"
+                                            aria-hidden="true" 2x></i></span></label>
                                 <input type="text" class="form-control" id="tag" placeholder="">
                             </div>
                             <div class="form-group">

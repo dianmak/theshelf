@@ -51,14 +51,14 @@ $(function () {
         $.get("/api/items/allcategories/", function (result) {
             console.log(result);
             result.forEach(element => {
-                $("#labels").append(`<div><label class="btn btn-secondary">
-            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.category}">${element.category}</label></div>`);
+                $("#labels").append(`<label class="btn btn-secondary">
+            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.category}">${element.category}</label>`);
             });
         });
         //HARDCODED WORKING BUTTONS, DYNAMICALLY GENERATED BUTTONS ARE NOT WORKING
-        $("#labels").append(`<div><label class="btn btn-secondary">
+        $("#labels").append(`<label class="btn btn-secondary">
         <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Makeup">Makeup</label><label class="btn btn-secondary">
-        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Skincare">Skincare</label></div>`);
+        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Skincare">Skincare</label>`);
 
         $(".tagsbutton").on("change", function (e) {
             e.preventDefault();
@@ -98,15 +98,16 @@ $(function () {
             console.log(result);
             result.forEach(element => {
                 if (element.label != null) {
-                    $("#labels").append(`<div><label class="btn btn-secondary">
-                <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.label}">${element.label}</label></div>`);
-                }
+                    $("#labels").append(`<label class="btn btn-secondary">
+                <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.label}">${element.label}</label>`);
+                };
+                console.log(element.label)
             });
         });
         //HARDCODED WORKING BUTTONS, DYNAMICALLY GENERATED BUTTONS ARE NOT WORKING
-        $("#labels").append(`<div><label class="btn btn-secondary">
+        $("#labels").append(`<label class="btn btn-secondary">
             <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Moisturizer">Moisturizer</label><label class="btn btn-secondary">
-            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Eyes">Eyes</label></div>`);
+            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Eyes">Eyes</label>`);
 
         $(".tagsbutton").on("change", function (e) {
             e.preventDefault();
@@ -114,7 +115,6 @@ $(function () {
             $("#shelfdisplay").empty();
 
             $.get("/api/items/tag/" + $(this).attr("value"), function (result) {
-
 
                 result.forEach(element => {
                     $("#shelfdisplay").append(`
@@ -131,6 +131,7 @@ $(function () {
                 });
             });
         });
+
     });
 
 

@@ -5,7 +5,8 @@ const models = require("../models");
 
 //Log in routes
 router.get("/login", function (req, res) {
-    res.sendFile("/views/login.html");
+    res.sendFile(path.join(__dirname, "/views/login.html"));
+    // res.sendFile("/views/login.html");
 });
 
 router.post("/login", function (req, res) {

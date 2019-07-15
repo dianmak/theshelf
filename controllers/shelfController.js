@@ -264,7 +264,7 @@ router.get("/shelf", function (req, res) {
 
 router.get("/logout", function (req, res) {
     req.session.userID = undefined;
-    req.session, email = undefined;
+    req.session.email = undefined;
     return res.json({ next: "/login" });
 });
 

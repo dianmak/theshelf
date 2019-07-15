@@ -680,7 +680,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Fragrance",
         price: 70.00,
         previously_used: 1,
-        imageURL: "http://s.cdnsbn.com/images/products/16488135705.jpg",
+        imageURL: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS8ihy6oELnC7vFKjDeDrKIPPMXUvwFR9ieai7S4IRMBE0tSaK98-O7JrKfnRfa4JE7j65UpH8Itb-H0AyOIGnAEjfkBmwAhUjh2Z2gQ9pOXKEEJRUlDcD1KA&usqp=CAc",
         UserId: 2
     });
 

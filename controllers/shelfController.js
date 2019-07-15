@@ -252,14 +252,14 @@ router.get("/wallet", function (req, res) {
         return res.redirect("/login");
     }
     console.log(req.session.userID);
-    res.sendFile(path.join(__dirname, "../views/wallet.html"));
+    res.sendFile("/views/wallet.html");
 });
 
 router.get("/shelf", function (req, res) {
     if (req.session.userID === undefined) {
         return res.redirect("/login");
     }
-    res.sendFile(path.join(__dirname, "../views/shelf.html"));
+    res.sendFile("/views/shelf.html");
 });
 
 router.get("/logout", function (req, res) {

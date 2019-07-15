@@ -592,6 +592,73 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 2
     });
 
+    // Travel size
+    db.Item.create({
+        item_name: "Too Faced Damn Girl! 24-Hour Mascara",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "New",
+        expiry_date: "2020-07-13",
+        category: "Makeup",
+        price: 13.00,
+        previously_used: 2,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/13758063_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        UserId: 2
+
+    });
+    db.Item.create({
+        item_name: "IT Cosmetics Bye Bye Under Eye Concealer",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: "2020-07-13",
+        category: "Makeup",
+        price: 10.00,
+        previously_used: 2,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/12271526_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        UserId: 2
+    });
+    db.Item.create({
+        item_name: "Too Faced Chocolate Soleil Matte Bronzer",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "New",
+        expiry_date: null,
+        category: "Makeup",
+        price: 15.00,
+        previously_used: 0,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/11721584_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        UserId: 1
+    });
+    db.Item.create({
+        item_name: "Drybar Lil’ Lemon Drop Daily Detangler",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: null,
+        category: "Tool",
+        price: 12.00,
+        previously_used: 0,
+        imageURL: "https://www.sephora.com/productimages/sku/s1872837-main-zoom.jpg",
+        UserId: 1
+    });
+    db.Item.create({
+        item_name: "TMario Badescu Facial Spray With Aloe, Herbs & Rosewater",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: null,
+        category: "Skincare",
+        price: 5.00,
+        previously_used: 0,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/11721584_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        UserId: 1
+    });
     // Hair
 
     // Fragrance

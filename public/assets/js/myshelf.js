@@ -21,7 +21,7 @@ $(function () {
         e.preventDefault();
 
         $("#shelfdisplay").empty();
-        $("#tagbuttons").empty();
+        $("#labels").empty();
         // console.log($(this).attr("value"));
         $.get("/api/items/status/" + $(this).attr("value"), function (result) {
             console.log(result);
@@ -40,23 +40,79 @@ $(function () {
         });
     });
 
-    //when My Tags button is clicked, clear the page and dynamically render buttons with all user tags
+    //When My Categories button is clicked, clear the page and dynamically render buttons with all user tags
+    $("#mycategories").on("change", function (e) {
+        e.preventDefault();
+
+        $("#shelfdisplay").empty();
+        $("#labels").empty();
+
+        //Find all user tags and create buttons with each distinct tag
+        $.get("/api/items/allcategories/", function (result) {
+            console.log(result);
+            result.forEach(element => {
+                $("#labels").append(`<div><label class="btn btn-secondary">
+            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.category}">${element.category}</label></div>`);
+            });
+        });
+        //HARDCODED WORKING BUTTONS, DYNAMICALLY GENERATED BUTTONS ARE NOT WORKING
+        $("#labels").append(`<div><label class="btn btn-secondary">
+        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Makeup">Makeup</label><label class="btn btn-secondary">
+        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Skincare">Skincare</label></div>`);
+
+        $(".tagsbutton").on("change", function (e) {
+            e.preventDefault();
+            console.log("Botton clicked! " + this.value)
+            $("#shelfdisplay").empty();
+
+            $.get("/api/items/category/" + $(this).attr("value"), function (result) {
+                console.log("hitting api")
+
+                result.forEach(element => {
+                    $("#shelfdisplay").append(`
+            <div class="d-inline-block card" style="width: 18rem;">
+            <img src=${element.imageURL} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${element.item_name}</h5>
+                <p class="card-text">Category: ${element.category}</p>
+                <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
+            </div>
+            </div>
+            `);
+                });
+            });
+        });
+    });
+
+
+
+    //When My Tags button is clicked, clear the page and dynamically render buttons with all user tags
     $("#mytags").on("change", function (e) {
         e.preventDefault();
 
         $("#shelfdisplay").empty();
-        $("#tagbuttons").empty();
-        $("#tagbuttons").append(`<br><div id ="labels" class="btn-group btn-group-toggle text-center" data-toggle="buttons"></div>`);
+        $("#labels").empty();
+
+        //Find all user tags and create buttons with each distinct tag
+        $.get("/api/items/alltags/", function (result) {
+            console.log(result);
+            result.forEach(element => {
+                $("#labels").append(`<div><label class="btn btn-secondary">
+                <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.label}">${element.label}</label></div>`);
+            });
+        });
+        //HARDCODED WORKING BUTTONS, DYNAMICALLY GENERATED BUTTONS ARE NOT WORKING
         $("#labels").append(`<div><label class="btn btn-secondary">
-        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Moisturizer">Moisturizer</label><label class="btn btn-secondary">
-        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Eyes">Eyes</label></div>`);
+            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Moisturizer">Moisturizer</label><label class="btn btn-secondary">
+            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Eyes">Eyes</label></div>`);
 
         $(".tagsbutton").on("change", function (e) {
             e.preventDefault();
+            console.log("Botton clicked! " + this.value)
             $("#shelfdisplay").empty();
 
             $.get("/api/items/tag/" + $(this).attr("value"), function (result) {
-                console.log(result);
+
                 result.forEach(element => {
                     $("#shelfdisplay").append(`
                 <div class="d-inline-block card" style="width: 18rem;">

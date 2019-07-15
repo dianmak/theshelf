@@ -27,6 +27,10 @@ h1 {
     font-weight: 700;
 }
 
+h3{
+    margin: 25px;
+}
+
 h6 {
     font-family: 'Libre Barcode 39 Text', cursive;
     font-size: 8rem;
@@ -84,7 +88,7 @@ body {
 
 .row {
     display: block;
-    padding: 50px;
+    padding: 25px;
 }
 
 .btn-lg {

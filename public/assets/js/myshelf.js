@@ -55,12 +55,8 @@ $(function () {
             <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.category}">${element.category}</label>`);
             });
         });
-        //HARDCODED WORKING BUTTONS, DYNAMICALLY GENERATED BUTTONS ARE NOT WORKING
-        $("#labels").append(`<label class="btn btn-secondary">
-        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Makeup">Makeup</label><label class="btn btn-secondary">
-        <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Skincare">Skincare</label>`);
 
-        $(".tagsbutton").on("change", function (e) {
+        $(document).on("change", ".tagsbutton", function (e) {
             e.preventDefault();
             console.log("Botton clicked! " + this.value)
             $("#shelfdisplay").empty();
@@ -84,8 +80,6 @@ $(function () {
         });
     });
 
-
-
     //When My Tags button is clicked, clear the page and dynamically render buttons with all user tags
     $("#mytags").on("change", function (e) {
         e.preventDefault();
@@ -104,12 +98,8 @@ $(function () {
                 console.log(element.label)
             });
         });
-        //HARDCODED WORKING BUTTONS, DYNAMICALLY GENERATED BUTTONS ARE NOT WORKING
-        $("#labels").append(`<label class="btn btn-secondary">
-            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Moisturizer">Moisturizer</label><label class="btn btn-secondary">
-            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="Eyes">Eyes</label>`);
 
-        $(".tagsbutton").on("change", function (e) {
+        $(document).on("change", ".tagsbutton", function (e) {
             e.preventDefault();
             console.log("Botton clicked! " + this.value)
             $("#shelfdisplay").empty();
@@ -133,8 +123,6 @@ $(function () {
         });
 
     });
-
-
 
     //add item by input form (still needs incorporation of input form)
     $("insertbuttonhere").click(function (e) {

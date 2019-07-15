@@ -97,8 +97,10 @@ $(function () {
         $.get("/api/items/alltags/", function (result) {
             console.log(result);
             result.forEach(element => {
-                $("#labels").append(`<div><label class="btn btn-secondary">
+                if (element.label != null) {
+                    $("#labels").append(`<div><label class="btn btn-secondary">
                 <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.label}">${element.label}</label></div>`);
+                }
             });
         });
         //HARDCODED WORKING BUTTONS, DYNAMICALLY GENERATED BUTTONS ARE NOT WORKING
@@ -113,6 +115,7 @@ $(function () {
 
             $.get("/api/items/tag/" + $(this).attr("value"), function (result) {
 
+
                 result.forEach(element => {
                     $("#shelfdisplay").append(`
                 <div class="d-inline-block card" style="width: 18rem;">
@@ -124,6 +127,7 @@ $(function () {
                 </div>
                 </div>
                 `);
+
                 });
             });
         });

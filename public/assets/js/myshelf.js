@@ -248,8 +248,8 @@ $(function () {
         }
 
         var d = new Date();
-        var expiryDate = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
-        expiryDate.setMonth(dt.getMonth() + shelf_life);
+        var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
+        dt.setMonth(dt.getMonth() + shelf_life);
 
         if ($("#item_name").val().trim() === "" || ($("#item_name")) === null) {
             $("#item_name_warning_msg").append("Item name is required")
@@ -289,7 +289,7 @@ $(function () {
                 status: $("#status").val().trim(),
                 label: $("#tag").val().trim(),
                 tax: $("#price").val().trim() * tax_rate,
-                expiry_date: expiryDate.toLocaleDateString()
+                expiry_date: dt.toLocaleDateString()
 
             };
 

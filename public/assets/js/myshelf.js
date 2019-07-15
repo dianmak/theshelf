@@ -180,7 +180,9 @@ $(function () {
         placement: 'right',
         trigger: 'hover',
         html: true,
-        content: 'Right click on item image, click on Copy image address, and paste the link'
+        content: function () {
+            return '<img class="img-fluid" src="' + $("#imageURL").val().trim() + '" alt="Image preview" style="height:100px" class="center" />';
+        },
     });
 
 
@@ -246,8 +248,8 @@ $(function () {
         }
 
         var d = new Date();
-        var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
-        dt.setMonth(dt.getMonth() + shelf_life);
+        var expiryDate = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
+        expiryDate.setMonth(dt.getMonth() + shelf_life);
 
         if ($("#item_name").val().trim() === "" || ($("#item_name")) === null) {
             $("#item_name_warning_msg").append("Item name is required")
@@ -287,7 +289,7 @@ $(function () {
                 status: $("#status").val().trim(),
                 label: $("#tag").val().trim(),
                 tax: $("#price").val().trim() * tax_rate,
-                expiry_date: dt.toLocaleDateString()
+                expiry_date: expiryDate.toLocaleDateString()
 
             };
 

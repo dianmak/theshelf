@@ -647,7 +647,7 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 1
     });
     db.Item.create({
-        item_name: "TMario Badescu Facial Spray With Aloe, Herbs & Rosewater",
+        item_name: "Mario Badescu Facial Spray With Aloe, Herbs & Rosewater",
         label: "Travel",
         item_UPC: null,
         shelf_life: null,
@@ -656,7 +656,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Skincare",
         price: 5.00,
         previously_used: 0,
-        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/11721584_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        imageURL: "https://www.mariobadescu.com/content/images/thumbs/0018824_facial-spray-with-aloe-herbs-and-rosewater.jpeg",
         UserId: 1
     });
     // Hair

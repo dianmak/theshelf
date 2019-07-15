@@ -58,7 +58,7 @@ $(function () {
 
         $(document).on("change", ".tagsbutton", function (e) {
             e.preventDefault();
-            console.log("Botton clicked! " + this.value)
+            $("#labels").empty();
             $("#shelfdisplay").empty();
 
             $.get("/api/items/category/" + $(this).attr("value"), function (result) {
@@ -83,7 +83,6 @@ $(function () {
     //When My Tags button is clicked, clear the page and dynamically render buttons with all user tags
     $("#mytags").on("change", function (e) {
         e.preventDefault();
-
         $("#shelfdisplay").empty();
         $("#labels").empty();
 
@@ -103,9 +102,9 @@ $(function () {
             e.preventDefault();
             console.log("Botton clicked! " + this.value)
             $("#shelfdisplay").empty();
-
+            $("#labels").empty();
             $.get("/api/items/tag/" + $(this).attr("value"), function (result) {
-
+                $("#shelfdisplay").empty();
                 result.forEach(element => {
                     $("#shelfdisplay").append(`
                 <div class="d-inline-block card" style="width: 18rem;">

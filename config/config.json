@@ -24,7 +24,7 @@
     "password": "ap9x9n9ievwnr6at",
     "database": "j4zpyo6ai1jgxquf",
     "host": "ou6zjjcqbi307lip.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    // "port": 3306,
+    "port": 3306,
     "dialect": "mysql",
     "operatorsAliases": false,
     "use_env_variable": "JAWSDB_URL"

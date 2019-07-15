@@ -86,7 +86,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 20.00,
         previously_used: 5,
         imageURL: "http://s.cdnsbn.com/images/products/20885870902.jpg",
-        UserId: 1
+        UserId: 1,
+        label: "Eyes"
     });
 
     // 2 In Use
@@ -155,7 +156,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Makeup",
         price: 35.00,
         previously_used: 2,
-        imageURL: "https://i.ebayimg.com/images/i/362500111267-0-1/s-l1600.jpg",
+        imageURL: "https://images-na.ssl-images-amazon.com/images/I/21F7W%2BNx7AL.jpg",
         UserId: 1
     });
 
@@ -170,7 +171,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 49.00,
         previously_used: 0,
         imageURL: "https://dyn-images.hsn.com/is/image/HomeShoppingNetwork/310331?$prodzoom$",
-        UserId: 1
+        UserId: 1,
+        label: "Eyes"
     });
 
     // 8 History
@@ -199,7 +201,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 68.00,
         previously_used: 0,
         imageURL: "https://images.qvc.com/is/image/a/65/a291365.001?$uslarge$",
-        UserId: 1
+        UserId: 1,
+        label: "Moisturizer"
     });
 
     // 2 In Use
@@ -226,7 +229,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Skincare",
         price: 25.00,
         previously_used: 3,
-        imageURL: "https://i.ebayimg.com/images/i/264375341763-0-1/s-l1600.jpg",
+        imageURL: "https://i1.wp.com/lookgoodfeelgood.blog/wp-content/uploads/2018/05/31670914_10156367427964357_2468237054115315712_n.jpg?resize=604%2C487&ssl=1",
         UserId: 1
     });
 
@@ -297,7 +300,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 36.00,
         previously_used: 0,
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/DP1101201706383538M?wid=800&hei=800&op_sharpen=1",
-        UserId: 1
+        UserId: 1,
+        label: "Moisturizer"
     });
 
     // 9 Wish List
@@ -310,7 +314,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Skincare",
         price: 68.00,
         previously_used: 0,
-        imageURL: "https://n.nordstrommedia.com/id/sr3/7e66fc80-fe7c-462f-8570-8b3ab35a4f24.jpeg",
+        imageURL: "https://www.tataharperskincare.com/media/catalog/product/cache/small_image/400x400/799896e5c6c37e11608b9f8e1d047d15/c/l/clarifying-cleanser.jpg",
         UserId: 1
     });
 
@@ -325,7 +329,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Hair",
         price: 28.00,
         previously_used: 0,
-        imageURL: "https://i.ebayimg.com/images/i/223315732361-0-1/s-l1600.jpg",
+        imageURL: "https://cdn.shopify.com/s/files/1/0434/1661/products/n5-front_800x.jpg?v=1551856850",
         UserId: 1
     });
 
@@ -396,7 +400,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Fragrance",
         price: 115.00,
         previously_used: 0,
-        imageURL: "http://ecx.images-amazon.com/images/I/51WLcoQ0dfL._SL160_.jpg",
+        imageURL: "https://i5.walmartimages.com/asr/138c6340-e84a-49de-a53a-172adbc50c92_1.118942072bad322622e7ae43610bb464.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
         UserId: 1
     });
 
@@ -438,7 +442,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Fragrance",
         price: 165.00,
         previously_used: 1,
-        imageURL: "http://ecx.images-amazon.com/images/I/41Q20tpS1LL._SL160_.jpg",
+        imageURL: "https://i5.walmartimages.com/asr/122806b0-bf22-427f-b8b4-f7b7f037056b_1.478917bf1a6bbfb2fc5bf9c82a0705b6.png?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
         UserId: 1
     });
 
@@ -454,7 +458,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 18.00,
         previously_used: 4,
         imageURL: "http://ecx.images-amazon.com/images/I/41kuCDRkKWL._SL160_.jpg",
-        UserId: 1
+        UserId: 1,
+        label: "Tool"
     });
 
     // 2 In Use
@@ -468,7 +473,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 42.00,
         previously_used: 2,
         imageURL: "http://ecx.images-amazon.com/images/I/31y2kQ-GPGL._SL160_.jpg",
-        UserId: 1
+        UserId: 1,
+        label: "Moisturizer"
     });
 
     // 3 History
@@ -482,7 +488,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 45.00,
         previously_used: 0,
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/DP0708201617180776M?wid=800&hei=800&op_sharpen=1",
-        UserId: 1
+        UserId: 1,
+        label: "Tool"
     });
 
     // 4 New
@@ -510,7 +517,8 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 30.00,
         previously_used: 0,
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/3312e28c-6fcb-11e8-a4d0-c97530db13cc?wid=800&hei=800&op_sharpen=1",
-        UserId: 1
+        UserId: 1,
+        label: "Tool"
     });
 
 
@@ -534,7 +542,7 @@ db.sequelize.sync({ force: true }).then(function () {
         item_UPC: 814333022857,
         shelf_life: null,
         status: "In Use",
-        expiry_date: null,
+        expiry_date: "2019-10-13",
         category: "Makeup",
         price: 30.00,
         previously_used: 1,
@@ -555,7 +563,7 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 2
     });
 
-    // Skincare
+
     db.Item.create({
         item_name: "Jack Black Double Duty Face Moisturizer SPF 20",
         item_UPC: 682223020036,
@@ -592,11 +600,11 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 112.00,
         previously_used: 0,
         imageURL: "http://s.cdnsbn.com/images/products/18843598021.jpg",
-        UserId: 2
-    });
+         UserId: 2
+      });
 
+  
     // Hair
-
     db.Item.create({
         item_name: "The Mane Choice Head Honcho Men's Hair & Beard Oil Butter The Balm",
         item_UPC: 738577920253,
@@ -726,6 +734,77 @@ db.sequelize.sync({ force: true }).then(function () {
         previously_used: 0,
         imageURL: "http://s7d9.scene7.com/is/image/LordandTaylor/729238114913_main?$PDPLARGE$",
         UserId: 2
+    });
+  
+  
+    
+  
+    // Travel size
+    db.Item.create({
+        item_name: "Too Faced Damn Girl! 24-Hour Mascara",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "New",
+        expiry_date: "2020-07-13",
+        category: "Makeup",
+        price: 13.00,
+        previously_used: 2,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/13758063_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        UserId: 2
+
+    });
+     db.Item.create({
+        item_name: "IT Cosmetics Bye Bye Under Eye Concealer",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: "2020-07-13",
+        category: "Makeup",
+        price: 10.00,
+        previously_used: 2,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/12271526_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        UserId: 1
+    });
+    db.Item.create({
+        item_name: "Too Faced Chocolate Soleil Matte Bronzer",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "New",
+        expiry_date: null,
+        category: "Makeup",
+        price: 15.00,
+        previously_used: 0,
+        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/11721584_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
+        UserId: 1
+    });
+    db.Item.create({
+        item_name: "Drybar Lil’ Lemon Drop Daily Detangler",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: null,
+        category: "Tool",
+        price: 12.00,
+        previously_used: 0,
+        imageURL: "https://www.sephora.com/productimages/sku/s1872837-main-zoom.jpg",
+        UserId: 1
+    });
+    db.Item.create({
+        item_name: "Mario Badescu Facial Spray With Aloe, Herbs & Rosewater",
+        label: "Travel",
+        item_UPC: null,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: "2022-07-13",
+        category: "Skincare",
+        price: 5.00,
+        previously_used: 0,
+        imageURL: "https://www.sephora.com/productimages/sku/s2192078-main-Lhero.jpg",
+        UserId: 1
     });
 
 

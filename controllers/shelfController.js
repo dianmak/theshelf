@@ -24,6 +24,10 @@ router.get("/api/items/category/:category", function (req, res) {
     });
 });
 
+
+
+
+
 //get items by status
 router.get("/api/items/status/:status", function (req, res) {
     models.Item.findAll({ where: { status: req.params.status, UserId: req.session.userID } }).then(function (data) {
@@ -53,6 +57,53 @@ router.get("/api/myshelf", function (req, res) {
         res.json(data);
     });
 });
+
+//get items in use which are expiring next
+router.get("/api/items/expiring", function (req, res) {
+    models.Item.findAll({
+        limit: 4,
+        where: {
+            status: "In Use"
+        },
+        order: [['expiry_date', 'ASC']]
+    }).then(function (data) {
+        res.json(data);
+    });
+});
+//Find all of the unique tags
+router.get("/api/items/alltags", function (req, res) {
+    models.Item.findAll({
+        attributes: ['label'],
+        group: ['label']
+    }).then(function (data) {
+        res.json(data)
+    });
+})
+
+//Find all of the unique categories
+router.get("/api/items/allcategories", function (req, res) {
+    models.Item.findAll({
+        attributes: ['category'],
+        group: ['category']
+    }).then(function (data) {
+        res.json(data)
+    });
+})
+
+//Find items by tags
+router.get("/api/items/tag/:tag", function (req, res) {
+    models.Item.findAll({ where: { label: req.params.tag } }).then(function (data) {
+        res.json(data);
+    });
+});
+
+//Find items by category
+router.get("/api/items/category/:category", function (req, res) {
+    models.Item.findAll({ where: { category: req.params.category } }).then(function (data) {
+        res.json(data);
+    });
+});
+
 
 //get ONE item by id
 router.get("/api/items/id/:id", function (req, res) {

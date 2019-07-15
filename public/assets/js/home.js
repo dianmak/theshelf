@@ -16,6 +16,28 @@ $(function () {
         });
     });
 
+    // Show the next 4 expiring product that have In Use status
+    $.get("/api/items/expiring", function (result) {
+        console.log(result);
+
+        result.forEach(element => {
+            // if (element.expiry_date != null) {
+            $("#expiring").append(`
+            <div class="d-inline-block card" style="width: 18rem;">
+            <img src=${element.imageURL} class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${element.item_name}</h5>
+                <p class="card-text">Expiring: ${element.expiry_date}</p>
+                <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
+            </div>
+            </div>
+            `)
+            // }
+        });
+
+    })
+
+
     $.get("/api/home/chart", function (result) {
         const totalSpent = document.getElementById('totalSpent');
 

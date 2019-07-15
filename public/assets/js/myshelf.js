@@ -21,6 +21,7 @@ $(function () {
         e.preventDefault();
 
         $("#shelfdisplay").empty();
+        $("#labels").empty();
         // console.log($(this).attr("value"));
         $.get("/api/items/status/" + $(this).attr("value"), function (result) {
             console.log(result);
@@ -39,7 +40,87 @@ $(function () {
         });
     });
 
+    //When My Categories button is clicked, clear the page and dynamically render buttons with all user tags
+    $("#mycategories").on("change", function (e) {
+        e.preventDefault();
 
+        $("#shelfdisplay").empty();
+        $("#labels").empty();
+
+        //Find all user tags and create buttons with each distinct tag
+        $.get("/api/items/allcategories/", function (result) {
+            console.log(result);
+            result.forEach(element => {
+                $("#labels").append(`<label class="btn btn-secondary">
+            <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.category}">${element.category}</label>`);
+            });
+        });
+
+        $(document).on("change", ".tagsbutton", function (e) {
+            e.preventDefault();
+
+            $("#shelfdisplay").empty();
+
+            $.get("/api/items/category/" + $(this).attr("value"), function (result) {
+
+                result.forEach(element => {
+                    $("#shelfdisplay").append(`
+            <div class="d-inline-block card" style="width: 18rem;">
+            <img src=${element.imageURL} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${element.item_name}</h5>
+                <p class="card-text">Category: ${element.category}</p>
+                <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
+            </div>
+            </div>
+            `);
+                });
+            });
+        });
+    });
+
+    //When My Tags button is clicked, clear the page and dynamically render buttons with all user tags
+    $("#mytags").on("change", function (e) {
+        e.preventDefault();
+        $("#shelfdisplay").empty();
+        $("#labels").empty();
+
+        //Find all user tags and create buttons with each distinct tag
+        $.get("/api/items/alltags/", function (result) {
+            console.log(result);
+            result.forEach(element => {
+                if (element.label != null) {
+                    $("#labels").append(`<label class="btn btn-secondary">
+                <input class="tagsbutton" type="radio" name="options" autocomplete="off" value="${element.label}">${element.label}</label>`);
+                };
+                console.log(element.label)
+            });
+        });
+
+        $(document).on("change", ".tagsbutton", function (e) {
+            e.preventDefault();
+
+            $("#shelfdisplay").empty();
+
+            $.get("/api/items/tag/" + $(this).attr("value"), function (result) {
+                $("#shelfdisplay").empty();
+                result.forEach(element => {
+                    $("#shelfdisplay").append(`
+                <div class="d-inline-block card" style="width: 18rem;">
+                <img src=${element.imageURL} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${element.item_name}</h5>
+                    <p class="card-text">Category: ${element.category}</p>
+                    <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
+                </div>
+                </div>
+                `);
+
+                });
+            });
+        });
+
+    });
 
     //add item by input form (still needs incorporation of input form)
     $("insertbuttonhere").click(function (e) {
@@ -49,16 +130,51 @@ $(function () {
         });
     });
 
-
-
     //add item by UPC code
+
+    //append popovers
+
+    $('[id="upc-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: '<img src="/assets/images/upc.jpg" alt="UPC" style="height:100px" class="center">12 numeric digits found under item barcode'
+    });
+
+    $('[id="item-name-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: 'Required'
+    });
+
+    $('[id="shelf-life-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: '<img src="/assets/images/shelf_life.jpg" alt="Shelf Life" style="height:30px" class="center">Enter number listed on item packaging'
+    });
+    $('[id="tag-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: 'Enter custom label for your item'
+    });
+    $('[id="img-popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+        html: true,
+        content: function () {
+            return '<img class="img-fluid" src="' + $("#imageURL").val().trim() + '" alt="Image preview" style="height:100px" class="center" />';
+        },
+    });
+
 
     // This .on("click") function will trigger the AJAX Call
     $("#searchByUPC").on("click", function (event) {
         // event.preventDefault() can be used to prevent an event's default behavior.
         // Here, it prevents the submit button from trying to submit a form when clicked
         event.preventDefault();
-
 
         $("#item_UPC_warning_msg").empty();
 
@@ -98,6 +214,7 @@ $(function () {
         event.preventDefault();
 
         $("#item_name_warning_msg").empty();
+        $("#item_UPC_warning_msg").empty();
 
         //Here we will determine if tax rate needs to be applied to the product
         if ($("#add_tax").is(':checked')) {
@@ -107,15 +224,20 @@ $(function () {
             var tax_rate = 0;
         }
 
-        //Here we calculate the expiry date based on today's date and user provided shelf life 
+        //Here we calculate the expiry date based on today's date and user provided shelf life
         shelf_life = Number($("#shelf_life").val().trim());
-        if (shelf_life > !0) {
+        console.log("Shelf life before if: " + shelf_life);
+
+        if (shelf_life < 1) {
             shelf_life = 0
         }
 
         var d = new Date();
         var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
         dt.setMonth(dt.getMonth() + shelf_life);
+        console.log("Shelf life: " + shelf_life);
+        console.log(d);
+        console.log(dt.setMonth(dt.getMonth() + shelf_life));
 
         if ($("#item_name").val().trim() === "" || ($("#item_name")) === null) {
             $("#item_name_warning_msg").append("Item name is required")
@@ -137,8 +259,9 @@ $(function () {
             // Here we pass placeholder image to the database if the imageURL form field is blank
             if ($("#imageURL").val().trim() === "") {
 
-                //CAN WE COME UP WITH A FUN PLACEHOLDER IMAGE?
-                var imageURL = "http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png"
+
+
+                var imageURL = "assets/images/product-image-placeholder.jpg"
             } else {
                 var imageURL = $("#imageURL").val().trim()
             };
@@ -185,6 +308,7 @@ $(function () {
         $("#item_UPC").val("")
         $("#tag").val("")
         $('input[type="checkbox"]').prop('checked', true);
+        $("#item_UPC_warning_msg").empty();
     }
 
     // Save changes made to existing item

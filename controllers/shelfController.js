@@ -63,7 +63,8 @@ router.get("/api/items/expiring", function (req, res) {
     models.Item.findAll({
         limit: 4,
         where: {
-            status: "In Use"
+            status: "In Use",
+            UserId: req.session.userID
         },
         order: [['expiry_date', 'ASC']]
     }).then(function (data) {
@@ -74,7 +75,8 @@ router.get("/api/items/expiring", function (req, res) {
 router.get("/api/items/alltags", function (req, res) {
     models.Item.findAll({
         attributes: ['label'],
-        group: ['label']
+        group: ['label'],
+        where: { UserId: req.session.userID }
     }).then(function (data) {
         res.json(data)
     });
@@ -84,7 +86,8 @@ router.get("/api/items/alltags", function (req, res) {
 router.get("/api/items/allcategories", function (req, res) {
     models.Item.findAll({
         attributes: ['category'],
-        group: ['category']
+        group: ['category'],
+        where: { UserId: req.session.userID }
     }).then(function (data) {
         res.json(data)
     });
@@ -92,14 +95,14 @@ router.get("/api/items/allcategories", function (req, res) {
 
 //Find items by tags
 router.get("/api/items/tag/:tag", function (req, res) {
-    models.Item.findAll({ where: { label: req.params.tag } }).then(function (data) {
+    models.Item.findAll({ where: { label: req.params.tag, UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
 
 //Find items by category
 router.get("/api/items/category/:category", function (req, res) {
-    models.Item.findAll({ where: { category: req.params.category } }).then(function (data) {
+    models.Item.findAll({ where: { category: req.params.category, UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
@@ -183,14 +186,15 @@ router.put("/api/user/create", function (req, res) {
 
 
 // delete user profile
-router.delete("/api/user/delete/:email", function (req, res) {
-    models.User.destroy({ where: { email: req.params.email } }).then(function (result) {
+router.delete("/api/user/delete", function (req, res) {
+    models.User.destroy({ where: { id: req.session.userID } }).then(function (result) {
+        req.session.userID = undefined;
+        req.session.email = undefined;
         if (result.changedRows === 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
         }
-        res.status(200).end();
-
+        return res.json({ next: "/login" });
     });
 });
 
@@ -261,7 +265,7 @@ router.get("/shelf", function (req, res) {
 router.get("/logout", function (req, res) {
     req.session.userID = undefined;
     req.session, email = undefined;
-    return res.redirect("/login");
+    return res.json({ next: "/login" });
 });
 
 // Export routes for server.js to use.

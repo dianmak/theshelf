@@ -72,6 +72,7 @@ db.sequelize.sync({ force: true }).then(function () {
     //=============================================================DATA FOR TESTING=============================================================
     db.User.create({ email: "shelf@trilogy.com", name: "Kelly", tax_rate: 0.0625 });
     db.User.create({ email: "mark@techsonmusic.com", name: "Mark", tax_rate: 0.0625 });
+    db.User.create({ email: "session@testing.com", name: "Test", tax_rate: 0.0625 });
 
     // Kelly's items
     // Makeup Items
@@ -600,10 +601,10 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 112.00,
         previously_used: 0,
         imageURL: "http://s.cdnsbn.com/images/products/18843598021.jpg",
-         UserId: 2
-      });
+        UserId: 2
+    });
 
-  
+
     // Hair
     db.Item.create({
         item_name: "The Mane Choice Head Honcho Men's Hair & Beard Oil Butter The Balm",
@@ -735,10 +736,10 @@ db.sequelize.sync({ force: true }).then(function () {
         imageURL: "http://s7d9.scene7.com/is/image/LordandTaylor/729238114913_main?$PDPLARGE$",
         UserId: 2
     });
-  
-  
-    
-  
+
+
+
+
     // Travel size
     db.Item.create({
         item_name: "Too Faced Damn Girl! 24-Hour Mascara",
@@ -751,10 +752,10 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 13.00,
         previously_used: 2,
         imageURL: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/13758063_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
-        UserId: 2
+        UserId: 1
 
     });
-     db.Item.create({
+    db.Item.create({
         item_name: "IT Cosmetics Bye Bye Under Eye Concealer",
         label: "Travel",
         item_UPC: null,
@@ -787,7 +788,7 @@ db.sequelize.sync({ force: true }).then(function () {
         shelf_life: null,
         status: "In Use",
         expiry_date: null,
-        category: "Tool",
+        category: "Hair",
         price: 12.00,
         previously_used: 0,
         imageURL: "https://www.sephora.com/productimages/sku/s1872837-main-zoom.jpg",

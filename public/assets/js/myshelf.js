@@ -130,8 +130,6 @@ $(function () {
         });
     });
 
-
-
     //add item by UPC code
 
     //append popovers
@@ -177,7 +175,6 @@ $(function () {
         // event.preventDefault() can be used to prevent an event's default behavior.
         // Here, it prevents the submit button from trying to submit a form when clicked
         event.preventDefault();
-
 
         $("#item_UPC_warning_msg").empty();
 
@@ -229,13 +226,18 @@ $(function () {
 
         //Here we calculate the expiry date based on today's date and user provided shelf life
         shelf_life = Number($("#shelf_life").val().trim());
-        if (shelf_life > !0) {
+        console.log("Shelf life before if: " + shelf_life);
+
+        if (shelf_life < 1) {
             shelf_life = 0
         }
 
         var d = new Date();
         var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
         dt.setMonth(dt.getMonth() + shelf_life);
+        console.log("Shelf life: " + shelf_life);
+        console.log(d);
+        console.log(dt.setMonth(dt.getMonth() + shelf_life));
 
         if ($("#item_name").val().trim() === "" || ($("#item_name")) === null) {
             $("#item_name_warning_msg").append("Item name is required")

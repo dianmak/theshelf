@@ -158,7 +158,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Makeup",
         price: 35.00,
         previously_used: 2,
-        imageURL: "https://i.ebayimg.com/images/i/362500111267-0-1/s-l1600.jpg",
+        imageURL: "https://images-na.ssl-images-amazon.com/images/I/21F7W%2BNx7AL.jpg",
         UserId: 1
     });
 
@@ -231,7 +231,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Skincare",
         price: 25.00,
         previously_used: 3,
-        imageURL: "https://i.ebayimg.com/images/i/264375341763-0-1/s-l1600.jpg",
+        imageURL: "https://i1.wp.com/lookgoodfeelgood.blog/wp-content/uploads/2018/05/31670914_10156367427964357_2468237054115315712_n.jpg?resize=604%2C487&ssl=1",
         UserId: 1
     });
 
@@ -316,7 +316,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Skincare",
         price: 68.00,
         previously_used: 0,
-        imageURL: "https://n.nordstrommedia.com/id/sr3/7e66fc80-fe7c-462f-8570-8b3ab35a4f24.jpeg",
+        imageURL: "https://www.tataharperskincare.com/media/catalog/product/cache/small_image/400x400/799896e5c6c37e11608b9f8e1d047d15/c/l/clarifying-cleanser.jpg",
         UserId: 1
     });
 
@@ -331,7 +331,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Hair",
         price: 28.00,
         previously_used: 0,
-        imageURL: "https://i.ebayimg.com/images/i/223315732361-0-1/s-l1600.jpg",
+        imageURL: "https://cdn.shopify.com/s/files/1/0434/1661/products/n5-front_800x.jpg?v=1551856850",
         UserId: 1
     });
 
@@ -402,7 +402,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Fragrance",
         price: 115.00,
         previously_used: 0,
-        imageURL: "http://ecx.images-amazon.com/images/I/51WLcoQ0dfL._SL160_.jpg",
+        imageURL: "https://i5.walmartimages.com/asr/138c6340-e84a-49de-a53a-172adbc50c92_1.118942072bad322622e7ae43610bb464.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
         UserId: 1
     });
 
@@ -444,7 +444,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Fragrance",
         price: 165.00,
         previously_used: 1,
-        imageURL: "http://ecx.images-amazon.com/images/I/41Q20tpS1LL._SL160_.jpg",
+        imageURL: "https://i5.walmartimages.com/asr/122806b0-bf22-427f-b8b4-f7b7f037056b_1.478917bf1a6bbfb2fc5bf9c82a0705b6.png?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
         UserId: 1
     });
 
@@ -538,26 +538,26 @@ db.sequelize.sync({ force: true }).then(function () {
         imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
         UserId: 2
     });
-
-    db.Item.create({
-        item_name: "Tarte Treasure Pot Glitter Gel",
-        item_UPC: 846733031832,
-        shelf_life: null,
-        status: "Wish List",
-        expiry_date: null,
-        category: "Makeup",
-        price: 18.00,
-        previously_used: 0,
-        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
-        UserId: 2
-    });
+    //DUPLICATE
+    // db.Item.create({
+    //     item_name: "Tarte Treasure Pot Glitter Gel",
+    //     item_UPC: 846733031832,
+    //     shelf_life: null,
+    //     status: "Wish List",
+    //     expiry_date: null,
+    //     category: "Makeup",
+    //     price: 18.00,
+    //     previously_used: 0,
+    //     imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
+    //     UserId: 2
+    // });
 
     db.Item.create({
         item_name: "MILK MAKEUP Glitter Stick",
         item_UPC: 814333022857,
         shelf_life: null,
         status: "In Use",
-        expiry_date: "2019-07-13",
+        expiry_date: "2019-10-13",
         category: "Makeup",
         price: 30.00,
         previously_used: 1,
@@ -578,19 +578,19 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 2
     });
 
-    // Skincare
-    db.Item.create({
-        item_name: "Anastasia Beverly Hills Loose Glitter",
-        item_UPC: 689304230049,
-        shelf_life: null,
-        status: "History",
-        expiry_date: null,
-        category: "Makeup",
-        price: 15.00,
-        previously_used: 2,
-        imageURL: "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/10238887_fpx.tif?wid=300&fmt=jpeg&qlt=100",
-        UserId: 2
-    });
+    // DUPLICATE
+    // db.Item.create({
+    //     item_name: "Anastasia Beverly Hills Loose Glitter",
+    //     item_UPC: 689304230049,
+    //     shelf_life: null,
+    //     status: "History",
+    //     expiry_date: null,
+    //     category: "Makeup",
+    //     price: 15.00,
+    //     previously_used: 2,
+    //     imageURL: "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/10238887_fpx.tif?wid=300&fmt=jpeg&qlt=100",
+    //     UserId: 2
+    // });
 
     // Travel size
     db.Item.create({
@@ -652,11 +652,11 @@ db.sequelize.sync({ force: true }).then(function () {
         item_UPC: null,
         shelf_life: null,
         status: "In Use",
-        expiry_date: null,
+        expiry_date: "2022-07-13",
         category: "Skincare",
         price: 5.00,
         previously_used: 0,
-        imageURL: "https://www.mariobadescu.com/content/images/thumbs/0018824_facial-spray-with-aloe-herbs-and-rosewater.jpeg",
+        imageURL: "https://www.sephora.com/productimages/sku/s2192078-main-Lhero.jpg",
         UserId: 1
     });
     // Hair

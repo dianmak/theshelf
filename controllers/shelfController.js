@@ -3,9 +3,23 @@ const path = require("path");
 const router = express.Router();
 const models = require("../models");
 
+//Log in routes
+router.get("/login", function (req, res) {
+    res.sendFile(path.join(__dirname, "../views/login.html"));
+})
+
+router.post("/login", function (req, res) {
+    models.User.findAll({ where: { email: req.body.email } }).then(function (result) {
+        req.session.userID = result[0].id;
+        req.session.email = req.body.email;
+        console.log("post in router " + req.session.userID);
+        return res.json({ next: "/" });
+    });
+});
+
 //get items by category
 router.get("/api/items/category/:category", function (req, res) {
-    models.Item.findAll({ where: { category: req.params.category } }).then(function (data) {
+    models.Item.findAll({ where: { category: req.params.category, UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
@@ -16,17 +30,19 @@ router.get("/api/items/category/:category", function (req, res) {
 
 //get items by status
 router.get("/api/items/status/:status", function (req, res) {
-    models.Item.findAll({ where: { status: req.params.status } }).then(function (data) {
+    models.Item.findAll({ where: { status: req.params.status, UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
 
 //get most recently added items that are in use to display on home page
 router.get("/api/items/home", function (req, res) {
+    console.log(req.session.id);
     models.Item.findAll({
         limit: 4,
         where: {
-            status: "In Use"
+            status: "In Use",
+            UserId: req.session.userID
         },
         order: [['id', 'DESC']]
     }).then(function (data) {
@@ -37,7 +53,7 @@ router.get("/api/items/home", function (req, res) {
 
 //get ALL items for display on myshelf
 router.get("/api/myshelf", function (req, res) {
-    models.Item.findAll({}).then(function (data) {
+    models.Item.findAll({ where: { UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
@@ -47,7 +63,8 @@ router.get("/api/items/expiring", function (req, res) {
     models.Item.findAll({
         limit: 4,
         where: {
-            status: "In Use"
+            status: "In Use",
+            UserId: req.session.userID
         },
         order: [['expiry_date', 'ASC']]
     }).then(function (data) {
@@ -58,7 +75,8 @@ router.get("/api/items/expiring", function (req, res) {
 router.get("/api/items/alltags", function (req, res) {
     models.Item.findAll({
         attributes: ['label'],
-        group: ['label']
+        group: ['label'],
+        where: { UserId: req.session.userID }
     }).then(function (data) {
         res.json(data)
     });
@@ -68,7 +86,8 @@ router.get("/api/items/alltags", function (req, res) {
 router.get("/api/items/allcategories", function (req, res) {
     models.Item.findAll({
         attributes: ['category'],
-        group: ['category']
+        group: ['category'],
+        where: { UserId: req.session.userID }
     }).then(function (data) {
         res.json(data)
     });
@@ -76,14 +95,14 @@ router.get("/api/items/allcategories", function (req, res) {
 
 //Find items by tags
 router.get("/api/items/tag/:tag", function (req, res) {
-    models.Item.findAll({ where: { label: req.params.tag } }).then(function (data) {
+    models.Item.findAll({ where: { label: req.params.tag, UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
 
 //Find items by category
 router.get("/api/items/category/:category", function (req, res) {
-    models.Item.findAll({ where: { category: req.params.category } }).then(function (data) {
+    models.Item.findAll({ where: { category: req.params.category, UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
@@ -91,13 +110,14 @@ router.get("/api/items/category/:category", function (req, res) {
 
 //get ONE item by id
 router.get("/api/items/id/:id", function (req, res) {
-    models.Item.findByPk(req.params.id).then(function (data) {
+    models.Item.findOne({ where: { id: req.params.id, UserId: req.session.userID } }).then(function (data) {
         res.json(data);
     });
 });
 
 // add an item
 router.post("/api/myshelf/additem", function (req, res) {
+    req.body.UserId = req.session.userID;
     Item.create(req.body).then(function (result) {
         res.json({ id: result.item_name });
     });
@@ -166,20 +186,21 @@ router.put("/api/user/create", function (req, res) {
 
 
 // delete user profile
-router.delete("/api/user/delete/:email", function (req, res) {
-    models.User.destroy({ where: { email: req.params.email } }).then(function (result) {
+router.delete("/api/user/delete", function (req, res) {
+    models.User.destroy({ where: { id: req.session.userID } }).then(function (result) {
+        req.session.userID = undefined;
+        req.session.email = undefined;
         if (result.changedRows === 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
         }
-        res.status(200).end();
-
+        return res.json({ next: "/login" });
     });
 });
 
 // in use products for chart on home page
 router.get("/api/home/chart", function (req, res) {
-    models.Item.findAll({ where: { status: "In Use" }, attributes: ["category", "price"] }).then(function (result) {
+    models.Item.findAll({ where: { status: "In Use", UserId: req.session.userID }, attributes: ["category", "price"] }).then(function (result) {
         res.json(result);
     });
 });
@@ -188,7 +209,7 @@ router.get("/api/home/chart", function (req, res) {
 router.get("/api/wallet/table/:category", function (req, res) {
     models.Item.findAll({
         limit: 5,
-        where: { category: req.params.category },
+        where: { category: req.params.category, UserId: req.session.userID },
         order: [["createdAt", "DESC"]]
     }).then(function (result) {
         res.json(result);
@@ -208,7 +229,8 @@ router.post("/api/items", function (req, res) {
         status: req.body.status,
         label: req.body.label,
         tax: req.body.tax,
-        expiry_date: req.body.expiry_date
+        expiry_date: req.body.expiry_date,
+        UserId: req.session.userID
     })
         .then(function (modelsItem) {
             res.json(modelsItem);
@@ -219,17 +241,31 @@ router.post("/api/items", function (req, res) {
 // Each of the below routes just handles the HTML page that the user gets sent to.
 
 router.get("/", function (req, res) {
-    req.session.userID = 10;
+    if (req.session.userID === undefined) {
+        return res.redirect("/login");
+    }
     res.sendFile(path.join(__dirname, "../views/index.html"));
 });
 
 router.get("/wallet", function (req, res) {
+    if (req.session.userID === undefined) {
+        return res.redirect("/login");
+    }
     console.log(req.session.userID);
     res.sendFile(path.join(__dirname, "../views/wallet.html"));
 });
 
 router.get("/shelf", function (req, res) {
+    if (req.session.userID === undefined) {
+        return res.redirect("/login");
+    }
     res.sendFile(path.join(__dirname, "../views/shelf.html"));
+});
+
+router.get("/logout", function (req, res) {
+    req.session.userID = undefined;
+    req.session.email = undefined;
+    return res.json({ next: "/login" });
 });
 
 // Export routes for server.js to use.

@@ -28,8 +28,6 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-// require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
 const router = require("./controllers/shelfController");
 app.use(router);
 
@@ -74,6 +72,7 @@ db.sequelize.sync({ force: true }).then(function () {
     //=============================================================DATA FOR TESTING=============================================================
     db.User.create({ email: "shelf@trilogy.com", name: "Kelly", tax_rate: 0.0625 });
     db.User.create({ email: "mark@techsonmusic.com", name: "Mark", tax_rate: 0.0625 });
+    db.User.create({ email: "session@testing.com", name: "Test", tax_rate: 0.0625 });
 
     // Kelly's items
     // Makeup Items
@@ -538,19 +537,6 @@ db.sequelize.sync({ force: true }).then(function () {
         imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
         UserId: 2
     });
-    //DUPLICATE
-    // db.Item.create({
-    //     item_name: "Tarte Treasure Pot Glitter Gel",
-    //     item_UPC: 846733031832,
-    //     shelf_life: null,
-    //     status: "Wish List",
-    //     expiry_date: null,
-    //     category: "Makeup",
-    //     price: 18.00,
-    //     previously_used: 0,
-    //     imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
-    //     UserId: 2
-    // });
 
     db.Item.create({
         item_name: "MILK MAKEUP Glitter Stick",
@@ -578,19 +564,181 @@ db.sequelize.sync({ force: true }).then(function () {
         UserId: 2
     });
 
-    // DUPLICATE
-    // db.Item.create({
-    //     item_name: "Anastasia Beverly Hills Loose Glitter",
-    //     item_UPC: 689304230049,
-    //     shelf_life: null,
-    //     status: "History",
-    //     expiry_date: null,
-    //     category: "Makeup",
-    //     price: 15.00,
-    //     previously_used: 2,
-    //     imageURL: "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/10238887_fpx.tif?wid=300&fmt=jpeg&qlt=100",
-    //     UserId: 2
-    // });
+
+    db.Item.create({
+        item_name: "Jack Black Double Duty Face Moisturizer SPF 20",
+        item_UPC: 682223020036,
+        shelf_life: 18,
+        status: "History",
+        expiry_date: "2019-06-20",
+        category: "Skincare",
+        price: 28.00,
+        previously_used: 2,
+        imageURL: "http://s.cdnsbn.com/images/products/10030899921.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Clinique For Men Anti-Age Moisturizer",
+        item_UPC: 020714612764,
+        shelf_life: 22,
+        status: "In Use",
+        expiry_date: "2019-12-20",
+        category: "Skincare",
+        price: 40.00,
+        previously_used: 1,
+        imageURL: "http://s7d9.scene7.com/is/image/LordandTaylor/020714612764_main?$PDPLARGE$",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Tom Ford For Men Oil-Free Daily Moisturizer",
+        item_UPC: 888066023887,
+        shelf_life: 24,
+        status: "New",
+        expiry_date: "2020-06-10",
+        category: "Skincare",
+        price: 112.00,
+        previously_used: 0,
+        imageURL: "http://s.cdnsbn.com/images/products/18843598021.jpg",
+        UserId: 2
+    });
+
+
+    // Hair
+    db.Item.create({
+        item_name: "The Mane Choice Head Honcho Men's Hair & Beard Oil Butter The Balm",
+        item_UPC: 738577920253,
+        shelf_life: 18,
+        status: "In Use",
+        expiry_date: "2020-03-10",
+        category: "Hair",
+        price: 17.00,
+        previously_used: 3,
+        imageURL: "https://i.ebayimg.com/images/i/113291139667-0-1/s-l1600.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Headblade ATX All Terrain Scalp Razor",
+        item_UPC: 783318610733,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: null,
+        category: "Hair",
+        price: 20.00,
+        previously_used: 0,
+        imageURL: "http://ecx.images-amazon.com/images/I/417wLCnwO8L._SL160_.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Dove Men+Care Complete Care 2 In 1 Shampoo + Conditioner",
+        item_UPC: 079400553805,
+        shelf_life: 30,
+        status: "In Use",
+        expiry_date: "2020-09-18",
+        category: "Hair",
+        price: 6.00,
+        previously_used: 3,
+        imageURL: "https://pics.drugstore.com/prodimg/574365/450.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Dermalogica Medibac Clearing Oil Free Matte SPF 30",
+        item_UPC: 666151031715,
+        shelf_life: 22,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Hair",
+        price: 48.00,
+        previously_used: 3,
+        imageURL: "https://pics.drugstore.com/prodimg/485902/450.jpg",
+        UserId: 2
+    });
+    // Fragrance
+    db.Item.create({
+        item_name: "Paco Rabanne Invictus Eau De Toilette Spray",
+        item_UPC: 3349668515653,
+        shelf_life: 40,
+        status: "In Use",
+        expiry_date: "2022-07-18",
+        category: "Fragrance",
+        price: 70.00,
+        previously_used: 0,
+        imageURL: "http://s.cdnsbn.com/images/products/16488135705.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Burberry® Mr. Burberry Eau De Toilette",
+        item_UPC: 5045456747654,
+        shelf_life: 42,
+        status: "History",
+        expiry_date: "2019-10-20",
+        category: "Fragrance",
+        price: 70.00,
+        previously_used: 1,
+        imageURL: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS8ihy6oELnC7vFKjDeDrKIPPMXUvwFR9ieai7S4IRMBE0tSaK98-O7JrKfnRfa4JE7j65UpH8Itb-H0AyOIGnAEjfkBmwAhUjh2Z2gQ9pOXKEEJRUlDcD1KA&usqp=CAc",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "John Varvatos Artisan Pure Eau de Toilette",
+        item_UPC: 719346646550,
+        shelf_life: 46,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Fragrance",
+        price: 92.00,
+        previously_used: 0,
+        imageURL: "https://www.boscovs.com/wcsstore/boscovs/images/store/product/images/010648908a0109856new.jpg",
+        UserId: 2
+    });
+
+    // Other
+    db.Item.create({
+        item_name: "Jack Black Turbo Wash Energizing Cleanser For Hair & Body",
+        item_UPC: 682223040218,
+        shelf_life: 32,
+        status: "In Use",
+        expiry_date: "2020-08-19",
+        category: "Other",
+        price: 23.00,
+        previously_used: 3,
+        imageURL: "http://s.cdnsbn.com/images/products/11467199921.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Cocofloss Delicious Mint Floss",
+        item_UPC: 868131000128,
+        shelf_life: null,
+        status: "In Use",
+        expiry_date: null,
+        category: "Other",
+        price: 9.00,
+        previously_used: 6,
+        imageURL: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10255193_fpx.tif?wid=300&qlt=100,0&layer=comp&op_sharpen=0&resMode=bilin&op_usm=0.7,1.0,0.5,0&fmt=jpeg&4msn=.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "Shiseido Cleansing Massage Brush",
+        item_UPC: 729238114913,
+        shelf_life: null,
+        status: "Wish List",
+        expiry_date: null,
+        category: "Other",
+        price: 25.00,
+        previously_used: 0,
+        imageURL: "http://s7d9.scene7.com/is/image/LordandTaylor/729238114913_main?$PDPLARGE$",
+        UserId: 2
+    });
+
+
+
 
     // Travel size
     db.Item.create({
@@ -604,7 +752,7 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 13.00,
         previously_used: 2,
         imageURL: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/13758063_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
-        UserId: 2
+        UserId: 1
 
     });
     db.Item.create({
@@ -618,7 +766,7 @@ db.sequelize.sync({ force: true }).then(function () {
         price: 10.00,
         previously_used: 2,
         imageURL: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/12271526_fpx.tif?op_sharpen=1&wid=500&hei=613&fit=fit,1&$filtersm$",
-        UserId: 2
+        UserId: 1
     });
     db.Item.create({
         item_name: "Too Faced Chocolate Soleil Matte Bronzer",
@@ -640,7 +788,7 @@ db.sequelize.sync({ force: true }).then(function () {
         shelf_life: null,
         status: "In Use",
         expiry_date: null,
-        category: "Tool",
+        category: "Hair",
         price: 12.00,
         previously_used: 0,
         imageURL: "https://www.sephora.com/productimages/sku/s1872837-main-zoom.jpg",
@@ -659,11 +807,7 @@ db.sequelize.sync({ force: true }).then(function () {
         imageURL: "https://www.sephora.com/productimages/sku/s2192078-main-Lhero.jpg",
         UserId: 1
     });
-    // Hair
 
-    // Fragrance
-
-    // Other
 
 });
 

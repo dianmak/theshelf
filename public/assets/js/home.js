@@ -104,5 +104,22 @@ $(function () {
         });
     });
 
+    $("#delete").on("click", function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: "/api/user/delete",
+            method: "DELETE",
+        }).then(function (result) {
+            console.log("User has been deleted.");
+            window.location.href = result.next;
+        });
+    });
 
+    $("#logout").on("click", function (e) {
+        e.preventDefault();
+        $.get("/logout", function (result) {
+            console.log("You have been logged out. " + result);
+            window.location.href = result.next;
+        });
+    });
 });

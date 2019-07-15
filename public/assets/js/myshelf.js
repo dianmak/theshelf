@@ -62,7 +62,6 @@ $(function () {
             $("#shelfdisplay").empty();
 
             $.get("/api/items/category/" + $(this).attr("value"), function (result) {
-                console.log("hitting api")
 
                 result.forEach(element => {
                     $("#shelfdisplay").append(`
@@ -100,7 +99,7 @@ $(function () {
 
         $(document).on("change", ".tagsbutton", function (e) {
             e.preventDefault();
-            console.log("Botton clicked! " + this.value)
+
             $("#shelfdisplay").empty();
 
             $.get("/api/items/tag/" + $(this).attr("value"), function (result) {

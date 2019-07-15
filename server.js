@@ -787,7 +787,7 @@ db.sequelize.sync({ force: true }).then(function () {
         item_UPC: null,
         shelf_life: null,
         status: "In Use",
-        expiry_date: null,
+        expiry_date: "2021-07-13",
         category: "Hair",
         price: 12.00,
         previously_used: 0,

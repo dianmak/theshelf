@@ -24,10 +24,6 @@ router.get("/api/items/category/:category", function (req, res) {
     });
 });
 
-
-
-
-
 //get items by status
 router.get("/api/items/status/:status", function (req, res) {
     models.Item.findAll({ where: { status: req.params.status, UserId: req.session.userID } }).then(function (data) {
@@ -42,7 +38,7 @@ router.get("/api/items/home", function (req, res) {
         limit: 4,
         where: {
             status: "In Use",
-            UserId: req.session.userID
+            UserId: req.session.userID,
         },
         order: [['id', 'DESC']]
     }).then(function (data) {
@@ -64,7 +60,7 @@ router.get("/api/items/expiring", function (req, res) {
         limit: 4,
         where: {
             status: "In Use",
-            UserId: req.session.userID
+            UserId: req.session.userID,
         },
         order: [['expiry_date', 'ASC']]
     }).then(function (data) {

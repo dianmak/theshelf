@@ -5,8 +5,8 @@ const models = require("../models");
 
 //Log in routes
 router.get("/login", function (req, res) {
-    res.sendFile("/views/login.html");
-})
+    res.sendFile("/views/login");
+});
 
 router.post("/login", function (req, res) {
     models.User.findAll({ where: { email: req.body.email } }).then(function (result) {

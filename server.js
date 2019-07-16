@@ -534,6 +534,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Makeup",
         price: 18.00,
         previously_used: 0,
+        label: "Glitter",
         imageURL: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/12334627_fpx.tif?wid=300&fmt=jpeg&qlt=100",
         UserId: 2
     });
@@ -547,6 +548,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Makeup",
         price: 30.00,
         previously_used: 1,
+        label: "Glitter",
         imageURL: "https://s7d9.scene7.com/is/image/JCPenney/DP0207201807071136M?wid=800&hei=800&op_sharpen=1",
         UserId: 2
     });
@@ -560,6 +562,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Makeup",
         price: 15.00,
         previously_used: 2,
+        label: "Glitter",
         imageURL: "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/10238887_fpx.tif?wid=300&fmt=jpeg&qlt=100",
         UserId: 2
     });
@@ -572,6 +575,7 @@ db.sequelize.sync({ force: true }).then(function () {
         status: "History",
         expiry_date: "2019-06-20",
         category: "Skincare",
+        label: "Moisturizer",
         price: 28.00,
         previously_used: 2,
         imageURL: "http://s.cdnsbn.com/images/products/10030899921.jpg",
@@ -587,6 +591,7 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Skincare",
         price: 40.00,
         previously_used: 1,
+        label: "Moisturizer",
         imageURL: "http://s7d9.scene7.com/is/image/LordandTaylor/020714612764_main?$PDPLARGE$",
         UserId: 2
     });
@@ -600,7 +605,51 @@ db.sequelize.sync({ force: true }).then(function () {
         category: "Skincare",
         price: 112.00,
         previously_used: 0,
+        label: "Moisturizer",
         imageURL: "http://s.cdnsbn.com/images/products/18843598021.jpg",
+        UserId: 2
+    });
+
+
+
+    db.Item.create({
+        item_name: "Swirl Loofah Bath",
+        item_UPC: 888066023887,
+        shelf_life: 24,
+        status: "In Use",
+        expiry_date: "2020-06-10",
+        category: "Other",
+        price: 5.00,
+        previously_used: 0,
+        label: "Bath Time",
+        imageURL: "https://images-na.ssl-images-amazon.com/images/I/61zDyNdA1JL._SY300_QL70_.jpg",
+        UserId: 2
+    });
+    db.Item.create({
+        item_name: "Bath Bomb by LUSH",
+        item_UPC: 888066023887,
+        shelf_life: 6,
+        status: "New",
+        expiry_date: "2020-06-10",
+        category: "Other",
+        price: 15.00,
+        previously_used: 0,
+        label: "Bath Time",
+        imageURL: "https://images-na.ssl-images-amazon.com/images/I/41QTHYEEDEL.jpg",
+        UserId: 2
+    });
+
+    db.Item.create({
+        item_name: "B is for Bubble Bath",
+        item_UPC: 888066023887,
+        shelf_life: 6,
+        status: "New",
+        expiry_date: "2020-06-10",
+        category: "Other",
+        price: 18.00,
+        previously_used: 0,
+        label: "Bath Time",
+        imageURL: "https://target.scene7.com/is/image/Target/GUEST_10391a2a-029c-4527-af4b-51a64b7480f9?wid=488&hei=488&fmt=pjpeg",
         UserId: 2
     });
 

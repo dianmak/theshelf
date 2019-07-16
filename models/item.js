@@ -16,6 +16,7 @@ module.exports = function (sequelize, DataTypes) {
         shelf_life: {
             type: DataTypes.INTEGER,
             allowNull: true,
+            defaultValue: null
         },
         status: {
             type: DataTypes.STRING,
@@ -57,7 +58,7 @@ module.exports = function (sequelize, DataTypes) {
                 min: 0
             }
         },
-      
+
         rating: {
             type: DataTypes.INTEGER,
             allowNull: true,

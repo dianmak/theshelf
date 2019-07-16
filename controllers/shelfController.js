@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 const models = require("../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 //Log in routes
 router.get("/login", function (req, res) {
@@ -62,6 +64,7 @@ router.get("/api/items/expiring", function (req, res) {
         where: {
             status: "In Use",
             UserId: req.session.userID,
+            shelf_life: { [Op.ne]: null }
         },
         order: [['expiry_date', 'ASC']]
     }).then(function (data) {

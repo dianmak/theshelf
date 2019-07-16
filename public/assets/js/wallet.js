@@ -166,5 +166,6 @@ $(function () {
 
             }
         });
+        console.log(data);
     });
 });

@@ -27,6 +27,9 @@
     "port": 3306,
     "dialect": "mysql",
     "operatorsAliases": false,
-    "use_env_variable": "JAWSDB_URL"
+    "use_env_variable": "JAWSDB_URL",
+    "dialectOptions": {
+      "decimalNumbers": true
+    }
   }
 }

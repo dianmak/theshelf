@@ -9,7 +9,7 @@ $(function () {
             <div class="card-body">
                 <h5 class="card-title">${element.item_name}</h5>
                 <p class="card-text">Category: ${element.category}</p>
-                <button type="button" class="btn btn-primary" id="viewMore" value=${element.id})>More</button>
+                <button type="button" class="btn btn-primary" id="viewMore" value=${element.id}>More</button>
             </div>
             </div>
             `);
@@ -133,41 +133,51 @@ $(function () {
     //add item by UPC code
 
     //append popovers
+    function popovers() {
+        $('[class="upc-popover"]').popover({
+            placement: 'right',
+            trigger: 'hover',
+            html: true,
+            content: '<img src="/assets/images/upc.jpg" alt="UPC" style="height:100px" class="center">12 numeric digits found under item barcode'
+        });
 
-    $('[id="upc-popover"]').popover({
-        placement: 'right',
-        trigger: 'hover',
-        html: true,
-        content: '<img src="/assets/images/upc.jpg" alt="UPC" style="height:100px" class="center">12 numeric digits found under item barcode'
-    });
+        $('[class="item-name-popover"]').popover({
+            placement: 'right',
+            trigger: 'hover',
+            html: true,
+            content: 'Required'
+        });
 
-    $('[id="item-name-popover"]').popover({
-        placement: 'right',
-        trigger: 'hover',
-        html: true,
-        content: 'Required'
-    });
-
-    $('[id="shelf-life-popover"]').popover({
-        placement: 'right',
-        trigger: 'hover',
-        html: true,
-        content: '<img src="/assets/images/shelf_life.jpg" alt="Shelf Life" style="height:30px" class="center">Enter number listed on item packaging'
-    });
-    $('[id="tag-popover"]').popover({
-        placement: 'right',
-        trigger: 'hover',
-        html: true,
-        content: 'Enter custom label for your item'
-    });
-    $('[id="img-popover"]').popover({
-        placement: 'right',
-        trigger: 'hover',
-        html: true,
-        content: function () {
-            return '<img class="img-fluid" src="' + $("#imageURL").val().trim() + '" alt="Image preview" style="height:100px" class="center" />';
-        },
-    });
+        $('[class="shelf-life-popover"]').popover({
+            placement: 'right',
+            trigger: 'hover',
+            html: true,
+            content: '<img src="/assets/images/shelf_life.jpg" alt="Shelf Life" style="height:30px" class="center">Enter number listed on item packaging'
+        });
+        $('[class="tag-popover"]').popover({
+            placement: 'right',
+            trigger: 'hover',
+            html: true,
+            content: 'Enter custom label for your item'
+        });
+        $('[class="img-popover"]').popover({
+            placement: 'right',
+            trigger: 'hover',
+            html: true,
+            content: function () {
+                return '<img class="img-fluid" src="' + $("#imageURL").val().trim() + '" alt="Image preview" style="height:200px" class="center" />';
+            },
+        });
+        $('[class="img-popover-edit"]').popover({
+            placement: 'right',
+            trigger: 'hover',
+            html: true,
+            content: function () {
+                return '<img class="img-fluid" src="' + $("#imageURL_edit").val().trim() + '" alt="Image preview" style="height:200px" class="center" />';
+            },
+        });
+    };
+    popovers();
 
 
     // This .on("click") function will trigger the AJAX Call
@@ -310,6 +320,26 @@ $(function () {
     $(document).on("click", "#editItem", function (event) {
         event.preventDefault();
 
+        if ($("#expiry_date_edit").val().trim() === "") {
+            var expiryDate = undefined
+        } else {
+            var d = new Date($("#expiry_date_edit").val());
+            var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + (d.getDate() + 1));
+            var expiryDate = dt.toLocaleDateString()
+        };
+        console.log(expiryDate);
+        if ($("#rating_edit").val().trim() === "") {
+            var ratingEdit = undefined
+        } else {
+            var ratingEdit = $("#rating_edit").val().trim()
+        };
+
+        if ($("#price_edit").val().trim() === "") {
+            var price = undefined
+        } else {
+            var price = $("#price_edit").val().trim()
+        };
+
         let thisid = $(this).prop("value");
         let edits = {
             item_name: $("#item_name_edit").val(),
@@ -318,8 +348,11 @@ $(function () {
             status: $("#status_edit").val(),
             category: $("#category_edit").val(),
             label: $("#tags_edit").val(),
-            price: $("#price_edit").val(),
+            price: price,
             previously_used: $("#previous_edit").val(),
+            rating: ratingEdit,
+            review: $("#review_edit").val(),
+            expiry_date: expiryDate,
             id: thisid
         };
 
@@ -365,15 +398,18 @@ $(function () {
                 <div class="modal-body">
                 <form action="" method="POST" role="form">
                         <div class="form-group">
-                            <label for="">Item Name</label>
+                            <label for="">Item Name  <span data-toggle="popover" class="item-name-popover"><i
+                            class="fa fa-exclamation" aria-hidden="true" 2x></i></span></label>
                             <input type="text" class="form-control" id="item_name_edit" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="">Image Link</label>
+                            <label for="">Image Link  <span data-toggle="popover" class="img-popover-edit"><i
+                            class="fa fa-picture-o" aria-hidden="true" 2x></i></span></label>
                             <input type="text" class="form-control" id="imageURL_edit" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="">Shelf Life (in months)</label>
+                            <label for="">Shelf Life   <span data-toggle="popover" class="shelf-life-popover"><i
+                            class="fa fa-question" aria-hidden="true" 2x></i></span></label>
                             <input type="number" class="form-control" id="shelf_life_edit" placeholder="">
                         </div>
                         <div class="form-group">
@@ -400,13 +436,26 @@ $(function () {
                             <input type="text" class="form-control" id="previous_edit" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="">Tags</label>
+                            <label for="">Tags  <span data-toggle="popover" class="tag-popover"><i
+                            class="fa fa-tag" aria-hidden="true" 2x></i></span></label>
                             <input type="text" class="form-control" id="tags_edit" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="">Price</label>
                             <input type="number" class="form-control" id="price_edit" placeholder="">
                         </div>
+                        <div class="form-group">
+                        <label for="">Expiration Date</label>
+                        <input type="date" class="form-control" id="expiry_date_edit" placeholder="">
+                    </div>
+                        <div class="form-group">
+                        <label for="">Rating</label>
+                        <input type="text" class="form-control" id="rating_edit" placeholder="">
+                    </div>
+                    <div class="form-group">
+                    <label for="">Review</label>
+                    <input type="text" class="form-control" id="review_edit" placeholder="">
+                    </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="addTax_edit">
                             <label class="form-check-label" for="defaultCheck1">
@@ -423,6 +472,7 @@ $(function () {
         </div>
     </div>
     `);
+        popovers();
 
         $.get("/api/items/id/" + id, function (result) {
             $("#item_name_edit").val(result.item_name);
@@ -433,6 +483,9 @@ $(function () {
             $("#tags_edit").val(result.label);
             $("#price_edit").val(result.price);
             $("#previous_edit").val(result.previously_used);
+            $("#rating_edit").val(result.rating);
+            $("#review_edit").val(result.review);
+            $("#expiry_date_edit").val(result.expiry_date);
         });
 
         $("#viewmore").modal("show");

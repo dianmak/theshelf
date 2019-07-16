@@ -71,7 +71,6 @@ db.sequelize.sync({ force: true }).then(function () {
 
     //=============================================================DATA FOR TESTING=============================================================
     db.User.create({ email: "shelf@trilogy.com", name: "Kelly", tax_rate: 0.0625 });
-    // testing
     db.User.create({ email: "mark@techsonmusic.com", name: "Mark", tax_rate: 0.0625 });
     db.User.create({ email: "session@testing.com", name: "Test", tax_rate: 0.0625 });
 

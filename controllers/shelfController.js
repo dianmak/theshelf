@@ -241,8 +241,8 @@ router.get("/", function (req, res) {
     if (req.session.userID === undefined) {
         return res.redirect("/login");
     }
-    // res.sendFile("/views/index.html");
-    res.sendFile(path.join(__dirname, "../views/login.html"));
+    res.sendFile("./index.html");
+    // res.sendFile(path.join(__dirname, "../views/index.html"));
 });
 
 router.get("/wallet", function (req, res) {

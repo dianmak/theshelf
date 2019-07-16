@@ -9,9 +9,12 @@ The global cosmetic products market was valued at USD 532.43 billion in 2017, an
 “If I had to use one word to characterize the state of the U.S. beauty industry today, it would be disruption. Whether we look at categories, brands, or retailers, there are sweeping changes taking place to the market landscape,” said Larissa Jensen, executive director and beauty industry analyst at The NPD Group. “New retail concepts and technologies are changing the way we create, market, purchase, and use beauty products.”
 
 As a user:
-I want to know when my products expire and I should stop using them.
-I want to check what products I already have while I am out shopping so that I do not overbuy. 
-I want to have easy access to data on how much money I spend on cosmetics per category and over various intervals of time.
+
+* I want to know when my products expire & I should stop using them
+
+* I want to check what products I already have while I am out shopping so that I do not overbuy
+
+* I want to have easy access to data on how much money I spend on cosmetics per category & over various intervals of time
 
 ## Solution 🛍
 

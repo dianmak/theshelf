@@ -242,7 +242,6 @@ router.get("/", function (req, res) {
         return res.redirect("/login");
     }
     res.sendFile(path.join(__dirname, "../views/index.html"));
-    // res.sendFile(path.join(__dirname, "../views/index.html"));
 });
 
 router.get("/wallet", function (req, res) {

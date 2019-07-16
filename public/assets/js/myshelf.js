@@ -70,7 +70,7 @@ $(function () {
             <div class="card-body">
                 <h5 class="card-title">${element.item_name}</h5>
                 <p class="card-text">Category: ${element.category}</p>
-                <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
+                <button type="button" class="btn btn-primary" id="viewMore" value=${element.id}>More</button>
             </div>
             </div>
             `);
@@ -111,7 +111,7 @@ $(function () {
                 <div class="card-body">
                     <h5 class="card-title">${element.item_name}</h5>
                     <p class="card-text">Category: ${element.category}</p>
-                    <button type="button" class="btn btn-primary" onclick="viewMore(${element.id})">More</button>
+                    <button type="button" class="btn btn-primary" id="viewMore" value=${element.id}>More</button>
                 </div>
                 </div>
                 `);

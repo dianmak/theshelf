@@ -130,7 +130,10 @@ router.put("/api/myshelf/edititem", function (req, res) {
         status: req.body.status,
         category: req.body.category,
         label: req.body.label,
-        price: req.body.price
+        price: req.body.price,
+        review: req.body.review,
+        rating: req.body.rating,
+        expiry_date: req.body.expiry_date
     }, {
             where: {
                 id: req.body.id

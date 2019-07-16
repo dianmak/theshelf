@@ -55,7 +55,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
-    padding-top: 20%;
+    padding-top: 10%;
 }
 
 .parallax-two {
@@ -122,4 +122,8 @@ body {
 .btn {
     background: black;
     border: grey;
+}
+
+.img-fluid-head{
+    max-width: 70%;
 }

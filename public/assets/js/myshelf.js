@@ -218,7 +218,7 @@ $(function () {
 
         //Here we will determine if tax rate needs to be applied to the product
         if ($("#add_tax").is(':checked')) {
-            //how to capture logged in user tax rate?
+
             var tax_rate = 0.0625;
         } else {
             var tax_rate = 0;
@@ -226,18 +226,16 @@ $(function () {
 
         //Here we calculate the expiry date based on today's date and user provided shelf life
         shelf_life = Number($("#shelf_life").val().trim());
-        console.log("Shelf life before if: " + shelf_life);
-
         if (shelf_life < 1) {
-            shelf_life = 0
+            shelf_life = 0;
+            var expiryDate = undefined
+        } else {
+            var d = new Date();
+            var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
+            dt.setMonth(dt.getMonth() + shelf_life);
+            var expiryDate = dt.toLocaleDateString()
         }
 
-        var d = new Date();
-        var dt = new Date(d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate());
-        dt.setMonth(dt.getMonth() + shelf_life);
-        console.log("Shelf life: " + shelf_life);
-        console.log(d);
-        console.log(dt.setMonth(dt.getMonth() + shelf_life));
 
         if ($("#item_name").val().trim() === "" || ($("#item_name")) === null) {
             $("#item_name_warning_msg").append("Item name is required")
@@ -253,14 +251,11 @@ $(function () {
             if ($("#price").val().trim() === "") {
                 var price = undefined
             } else {
-                var price = $("#shelf_life").val().trim()
+                var price = $("#price").val().trim()
             };
 
             // Here we pass placeholder image to the database if the imageURL form field is blank
             if ($("#imageURL").val().trim() === "") {
-
-
-
                 var imageURL = "assets/images/product-image-placeholder.jpg"
             } else {
                 var imageURL = $("#imageURL").val().trim()
@@ -277,7 +272,7 @@ $(function () {
                 status: $("#status").val().trim(),
                 label: $("#tag").val().trim(),
                 tax: $("#price").val().trim() * tax_rate,
-                expiry_date: dt.toLocaleDateString()
+                expiry_date: expiryDate
 
             };
 

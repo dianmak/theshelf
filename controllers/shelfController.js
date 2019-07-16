@@ -6,7 +6,8 @@ const models = require("../models");
 //Log in routes
 router.get("/login", function (req, res) {
     res.sendFile(path.join(__dirname, "../views/login.html"));
-})
+    // res.sendFile("/views/login.html");
+});
 
 router.post("/login", function (req, res) {
     models.User.findAll({ where: { email: req.body.email } }).then(function (result) {
@@ -24,10 +25,6 @@ router.get("/api/items/category/:category", function (req, res) {
     });
 });
 
-
-
-
-
 //get items by status
 router.get("/api/items/status/:status", function (req, res) {
     models.Item.findAll({ where: { status: req.params.status, UserId: req.session.userID } }).then(function (data) {
@@ -42,7 +39,7 @@ router.get("/api/items/home", function (req, res) {
         limit: 4,
         where: {
             status: "In Use",
-            UserId: req.session.userID
+            UserId: req.session.userID,
         },
         order: [['id', 'DESC']]
     }).then(function (data) {
@@ -64,7 +61,7 @@ router.get("/api/items/expiring", function (req, res) {
         limit: 4,
         where: {
             status: "In Use",
-            UserId: req.session.userID
+            UserId: req.session.userID,
         },
         order: [['expiry_date', 'ASC']]
     }).then(function (data) {
@@ -244,7 +241,8 @@ router.get("/", function (req, res) {
     if (req.session.userID === undefined) {
         return res.redirect("/login");
     }
-    res.sendFile(path.join(__dirname, "../views/index.html"));
+    // res.sendFile("/views/index.html");
+    res.sendFile(path.join(__dirname, "../views/login.html"));
 });
 
 router.get("/wallet", function (req, res) {
@@ -252,6 +250,7 @@ router.get("/wallet", function (req, res) {
         return res.redirect("/login");
     }
     console.log(req.session.userID);
+    // res.sendFile("/views/wallet.html");
     res.sendFile(path.join(__dirname, "../views/wallet.html"));
 });
 
@@ -259,6 +258,7 @@ router.get("/shelf", function (req, res) {
     if (req.session.userID === undefined) {
         return res.redirect("/login");
     }
+    // res.sendFile("/views/shelf.html");
     res.sendFile(path.join(__dirname, "../views/shelf.html"));
 });
 

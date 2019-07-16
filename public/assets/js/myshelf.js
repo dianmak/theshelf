@@ -290,7 +290,8 @@ $(function () {
 
             addItem(newItem);
             clear();
-            $("#addByUPC").modal('hide')
+            $("#addByUPC").modal('hide');
+            location.reload();
         };
     });
 
@@ -340,11 +341,17 @@ $(function () {
             var price = $("#price_edit").val().trim()
         };
 
+        if ($("#shelf_life_edit").val().trim() === "") {
+            var shelf_life = undefined
+        } else {
+            var shelf_life = $("#shelf_life_edit").val().trim()
+        };
+
         let thisid = $(this).prop("value");
         let edits = {
             item_name: $("#item_name_edit").val(),
             imageURL: $("#imageURL_edit").val(),
-            shelf_life: $("#shelf_life_edit").val(),
+            shelf_life: shelf_life,
             status: $("#status_edit").val(),
             category: $("#category_edit").val(),
             label: $("#tags_edit").val(),
@@ -356,12 +363,18 @@ $(function () {
             id: thisid
         };
 
+        console.log(edits.shelf_life);
+        if (edits.shelf_life === '') {
+            edits.shelf_life = null;
+        }
+
         $.ajax({
             url: "/api/myshelf/edititem",
             method: "PUT",
             data: edits
         }).then(function (response) {
             console.log(response);
+            location.reload();
         });
     });
 

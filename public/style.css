@@ -93,6 +93,7 @@ body {
 
 .btn-lg {
     margin: 50px;
+    color: black !important;
 }
 
 #shelf-glance {
@@ -119,7 +120,7 @@ body {
     padding: 20%;
 }
 
-.btn {
+.btn{
     background: black;
     border: grey;
 }

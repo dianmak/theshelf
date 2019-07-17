@@ -193,7 +193,7 @@ $(function () {
             var upc = $("#item_UPC").val().trim();
 
             // Here we construct our URL
-            var queryURL = "http://localhost:8080/lookup/" + upc
+            var queryURL = "/lookup/" + upc
 
             //Empty warning message
             $("#item_UPC_warning_msg").append();

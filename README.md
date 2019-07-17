@@ -1,4 +1,4 @@
-## LOGIN INFORMATION 🔐
+## Login Information 🔐
 
 1. User: shelf@trilogy.com
 2. User: mark@techsonmusic.com

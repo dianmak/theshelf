@@ -1,4 +1,10 @@
-## TEAM SHELFIE
+## LOGIN INFORMATION 🔐
+
+1. User: shelf@trilogy.com
+2. User: mark@techsonmusic.com
+3. User: session@testing.com
+
+## TEAM SHELFIE 
 
 Dian, Kelly, Paulina
 
